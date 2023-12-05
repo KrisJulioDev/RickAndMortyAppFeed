@@ -16,6 +16,7 @@
 		35D3633A2B1E993200499E0D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D363372B1E993200499E0D /* HTTPClient.swift */; };
 		35D3633D2B1E993A00499E0D /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D3633C2B1E993A00499E0D /* URLProtocolStub.swift */; };
 		35D3633F2B1E9DC600499E0D /* FeedEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D3633E2B1E9DC600499E0D /* FeedEndpoint.swift */; };
+		35D363412B1E9FAD00499E0D /* XCTestsCase+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D363402B1E9FAD00499E0D /* XCTestsCase+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		35D363372B1E993200499E0D /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		35D3633C2B1E993A00499E0D /* URLProtocolStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		35D3633E2B1E9DC600499E0D /* FeedEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEndpoint.swift; sourceTree = "<group>"; };
+		35D363402B1E9FAD00499E0D /* XCTestsCase+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestsCase+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				35D3633C2B1E993A00499E0D /* URLProtocolStub.swift */,
+				35D363402B1E9FAD00499E0D /* XCTestsCase+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35D363412B1E9FAD00499E0D /* XCTestsCase+Helpers.swift in Sources */,
 				35D363272B1E991100499E0D /* FeedLoaderAPITests.swift in Sources */,
 				35D3633D2B1E993A00499E0D /* URLProtocolStub.swift in Sources */,
 			);

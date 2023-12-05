@@ -12,7 +12,7 @@ public class Page  {
     let pages: Int
     let url: URL
     
-    init(count: Int, pages: Int, url: URL) {
+    public init(count: Int, pages: Int, url: URL) {
         self.count = count
         self.pages = pages
         self.url = url
@@ -23,13 +23,14 @@ public class NextPage: Page {}
 public class PrevPage: Page {}
 
 public enum FeedEndpoint {
-    case get(page: Page?)
+    case get(_ page: Page? = nil)
     
+    public static var initialURL: URL { URL(string: "https://rickandmortyapi.com/api/character")! }
+
     public var url: URL {
         switch self {
         case let .get(page):
-            let initialURL = URL(string: "https://rickandmortyapi.com/api/character")!
-            return page?.url ?? initialURL
+            return page?.url ?? Self.initialURL
         }
     }
 }

@@ -16,7 +16,7 @@ final class RickMortyAppTests: XCTestCase {
     }
     
     func test_getFromURL_performGetRequestWithURL() {
-        let anyURL = URL(string: "any-url")!
+        let anyURL = anyURL()
         let exp = expectation(description: "Wait to observe")
         
         URLProtocolStub.observeRequest { request in
@@ -30,13 +30,47 @@ final class RickMortyAppTests: XCTestCase {
     }
     
     func test_getRequest_performInitialFeedRequest() {
-        let initialURL = FeedEndpoint.get(page: nil).url
+        let initialURL = FeedEndpoint.get().url
         let exp = expectation(description: "Wait to observe")
         
         URLProtocolStub.observeRequest { request in
             XCTAssertEqual(request.url?.scheme, "https", "scheme")
             XCTAssertEqual(request.url?.host(), "rickandmortyapi.com", "host")
             XCTAssertEqual(request.url?.path(), "/api/character", "path")
+            XCTAssertEqual(request.httpMethod, "GET", "method")
+            exp.fulfill()
+        }
+        
+        makeSUT().get(url: initialURL) { _ in }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    func test_getNextRequest_performPage3Request() {
+        let initialURL = FeedEndpoint.get(nextPage).url
+        let exp = expectation(description: "Wait to observe")
+        
+        URLProtocolStub.observeRequest { request in
+            XCTAssertEqual(request.url?.scheme, "https", "scheme")
+            XCTAssertEqual(request.url?.host(), "rickandmortyapi.com", "host")
+            XCTAssertEqual(request.url?.path(), "/api/character/", "path")
+            XCTAssertEqual(request.url?.query(), "page=3", "path")
+            XCTAssertEqual(request.httpMethod, "GET", "method")
+            exp.fulfill()
+        }
+        
+        makeSUT().get(url: initialURL) { _ in }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    func test_getPreviousRequest_performPage2Request() {
+        let initialURL = FeedEndpoint.get(previousPage).url
+        let exp = expectation(description: "Wait to observe")
+        
+        URLProtocolStub.observeRequest { request in
+            XCTAssertEqual(request.url?.scheme, "https", "scheme")
+            XCTAssertEqual(request.url?.host(), "rickandmortyapi.com", "host")
+            XCTAssertEqual(request.url?.path(), "/api/character/", "path")
+            XCTAssertEqual(request.url?.query(), "page=2", "path")
             XCTAssertEqual(request.httpMethod, "GET", "method")
             exp.fulfill()
         }
@@ -52,6 +86,18 @@ final class RickMortyAppTests: XCTestCase {
         configuration.protocolClasses = [URLProtocolStub.self]
         let session = URLSession(configuration: configuration)
         return URLSessionHTTPClient(session: session)
+    }
+    
+    private var nextPage: Page {
+        NextPage(count: 1, pages: 1,
+            url: URL(string: "https://rickandmortyapi.com/api/character/?page=3")!
+        )
+    }
+    
+    private var previousPage: Page {
+        NextPage(count: 1, pages: 1,
+            url: URL(string: "https://rickandmortyapi.com/api/character/?page=2")!
+        )
     }
     
     private class HTTPClientSpy: HTTPClient {

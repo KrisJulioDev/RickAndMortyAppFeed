@@ -7,16 +7,6 @@
 
 import Foundation
 
-public class Page  {
-    let url: URL
-    
-    public init(url: URL) {
-        self.url = url
-    }
-}
-
-public class NextPage: Page {}
-public class PreviousPage: Page {}
 
 public enum FeedEndpoint {
     case get(_ page: Page? = nil)

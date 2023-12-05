@@ -25,18 +25,33 @@ public protocol FeedLoader {
     func get(from url: URL, completion: (@escaping (Result) -> Void))
 }
 
-public struct CharacterLoader: FeedLoader {
-    let client: HTTPClient
+public class CharacterLoader: FeedLoader {
+    private let client: URLSessionHTTPClient
+    private var task: HTTPClientTask?
     
-    public init(client: HTTPClient) {
+    public init(client: URLSessionHTTPClient) {
         self.client = client
     }
     
     public enum Error: Swift.Error {
         case invalidResponse
+        case mappingError
     }
     
     public func get(from url: URL, completion: (@escaping (FeedLoader.Result) -> Void)) {
-         
+        task = client.get(url: url) { [weak self] result in
+            guard self != nil else { return }
+            
+            switch result {
+            case let .success((data, response)):
+                do {
+                    completion(.success(try CharacterFeedMapper.map(data: data, response: response)))
+                } catch {
+                    completion(.failure(Error.mappingError))
+                }
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
     }
 } 

@@ -8,33 +8,6 @@
 import XCTest
 import RickAndMortyFeed
 
-public class Page  {
-    let count: Int
-    let pages: Int
-    let url: URL
-    
-    init(count: Int, pages: Int, url: URL) {
-        self.count = count
-        self.pages = pages
-        self.url = url
-    }
-}
-
-public class NextPage: Page {
-    
-}
-
-public enum FeedEndpoint {
-    case get(page: Page?)
-    
-    var url: URL {
-        switch self {
-        case let .get(page):
-            let initialURL = URL(string: "https://rickandmortyapi.com/api/character")!
-            return page?.url ?? initialURL
-        }
-    }
-}
 
 final class RickMortyAppTests: XCTestCase {
     override func tearDown() {
@@ -42,7 +15,7 @@ final class RickMortyAppTests: XCTestCase {
         URLProtocolStub.removeStub()
     }
     
-    func test_loadRequest_firstRequestHasInitialURL() {
+    func test_getFromURL_performGetRequestWithURL() {
         let anyURL = URL(string: "any-url")!
         let exp = expectation(description: "Wait to observe")
         
@@ -53,6 +26,22 @@ final class RickMortyAppTests: XCTestCase {
         }
         
         makeSUT().get(url: anyURL) { _ in }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    func test_getRequest_performInitialFeedRequest() {
+        let initialURL = FeedEndpoint.get(page: nil).url
+        let exp = expectation(description: "Wait to observe")
+        
+        URLProtocolStub.observeRequest { request in
+            XCTAssertEqual(request.url?.scheme, "https", "scheme")
+            XCTAssertEqual(request.url?.host(), "rickandmortyapi.com", "host")
+            XCTAssertEqual(request.url?.path(), "/api/character", "path")
+            XCTAssertEqual(request.httpMethod, "GET", "method")
+            exp.fulfill()
+        }
+        
+        makeSUT().get(url: initialURL) { _ in }
         wait(for: [exp], timeout: 1.0)
     }
     

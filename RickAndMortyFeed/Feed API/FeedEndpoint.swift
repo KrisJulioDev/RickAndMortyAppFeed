@@ -8,19 +8,15 @@
 import Foundation
 
 public class Page  {
-    let count: Int
-    let pages: Int
     let url: URL
     
-    public init(count: Int, pages: Int, url: URL) {
-        self.count = count
-        self.pages = pages
+    public init(url: URL) {
         self.url = url
     }
 }
 
 public class NextPage: Page {}
-public class PrevPage: Page {}
+public class PreviousPage: Page {}
 
 public enum FeedEndpoint {
     case get(_ page: Page? = nil)

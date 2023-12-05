@@ -8,3 +8,5 @@
 import Foundation
 
 func anyURL() -> URL { URL(string: "any-url")! }
+func invalidData() -> Data { Data("invalid-data".utf8) }
+

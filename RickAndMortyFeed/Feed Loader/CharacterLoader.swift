@@ -7,20 +7,36 @@
 
 import Foundation
 
+public class Info: Decodable {
+    let count: Int
+    let pages: Int
+    let next: String?
+    let prev: String?
+}
+
+public class CharacterFeedResult: Decodable {
+    public let info: Info
+    public let results: [CharacterItem]
+}
+
 public protocol FeedLoader {
-    typealias Result = Swift.Result<Data?, Error>
+    typealias Result = Swift.Result<CharacterFeedResult, Error>
     
     func get(from url: URL, completion: (@escaping (Result) -> Void))
 }
 
 public struct CharacterLoader: FeedLoader {
-    let client: URLSessionHTTPClient
+    let client: HTTPClient
     
-    public init(client: URLSessionHTTPClient) {
+    public init(client: HTTPClient) {
         self.client = client
     }
     
-    public func get(from url: URL, completion: (@escaping (FeedLoader.Result) -> Void)) {
-        completion(.success(nil))
+    public enum Error: Swift.Error {
+        case invalidResponse
     }
-}
+    
+    public func get(from url: URL, completion: (@escaping (FeedLoader.Result) -> Void)) {
+         
+    }
+} 

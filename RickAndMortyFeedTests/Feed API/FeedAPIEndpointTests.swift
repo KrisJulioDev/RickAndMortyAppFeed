@@ -7,9 +7,8 @@
 
 import XCTest
 import RickAndMortyFeed
-
-
-final class RickMortyAppTests: XCTestCase {
+ 
+final class FeedAPIEndpointTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         URLProtocolStub.removeStub()
@@ -89,15 +88,11 @@ final class RickMortyAppTests: XCTestCase {
     }
     
     private var nextPage: Page {
-        NextPage(count: 1, pages: 1,
-            url: URL(string: "https://rickandmortyapi.com/api/character/?page=3")!
-        )
+        NextPage(url: URL(string: "https://rickandmortyapi.com/api/character/?page=3")!)
     }
     
     private var previousPage: Page {
-        NextPage(count: 1, pages: 1,
-            url: URL(string: "https://rickandmortyapi.com/api/character/?page=2")!
-        )
+        PreviousPage(url: URL(string: "https://rickandmortyapi.com/api/character/?page=2")!)
     }
     
     private class HTTPClientSpy: HTTPClient {

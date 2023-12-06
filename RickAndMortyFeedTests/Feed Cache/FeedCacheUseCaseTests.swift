@@ -17,7 +17,7 @@ final class FeedCacheUseCaseTests: XCTestCase {
        XCTAssertEqual(store.receivedMessages, [])
     }
     
-    func test_delete_doesNotRequestInsertionOnDeletionError() throws {
+    func test_save_doesNotRequestInsertionOnDeletionError() throws {
         let (sut, store) = makeSUT()
         let deletionError = anyError()
         
@@ -28,18 +28,30 @@ final class FeedCacheUseCaseTests: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [.deleteCache])
     }
     
+    func test_save_requestsNewCacheInsertionOnSuccessfulCacheDeletion() {
+        let timestamp = Date()
+        let (sut, store) = makeSUT { timestamp }
+        let feed = feedCharacters()
+        
+        store.completedDeletion()
+        
+        try? sut.save(feed.model)
+        
+        XCTAssertEqual(store.receivedMessages, [.deleteCache, .insert(feed.local, timestamp)]) 
+    }
+     
     // MARK: Helpers
     
-    func makeSUT() -> (loader: LocalFeedLoader, store: FeedStoreSpy) {
+    func makeSUT(currentDate: @escaping () -> Date = Date.init) -> (loader: LocalFeedLoader, store: FeedStoreSpy) {
         let storeSpy = FeedStoreSpy()
-        let feedLoader = LocalFeedLoader(store: storeSpy, currentDate: Date.init)
+        let feedLoader = LocalFeedLoader(store: storeSpy, currentDate: currentDate)
         return (feedLoader, storeSpy)
     }
     
     class FeedStoreSpy: FeedStore {
         
         enum ReceivedMessages: Equatable {
-            case insert(feed: [LocalCharacter], timestamp: Date)
+            case insert([LocalCharacter], Date)
             case retrieve
             case deleteCache
         }
@@ -55,8 +67,8 @@ final class FeedCacheUseCaseTests: XCTestCase {
             return try retrievalResult?.get()
         }
         
-        func save(feed: [RickAndMortyFeed.LocalCharacter], timestamp: Date) throws {
-            receivedMessages.append(.insert(feed: feed, timestamp: timestamp))
+        func save(feed: [LocalCharacter], timestamp: Date) throws {
+            receivedMessages.append(.insert(feed, timestamp))
             try? insertionResult?.get()
         }
         
@@ -71,6 +83,10 @@ final class FeedCacheUseCaseTests: XCTestCase {
         
         func completeDeletion(with error: Error) {
             deletionResult = .failure(error)
+        }
+        
+        func completedDeletion() {
+            deletionResult = .success(())
         }
     }
 }

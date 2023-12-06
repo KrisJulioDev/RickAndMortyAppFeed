@@ -14,9 +14,9 @@ public struct CharacterItem: Equatable, Decodable {
     public let species: String
     public let type: String
     public let gender: String
-    public let image: String
+    public let image: String?
     
-    public init(id: Int, name: String, status: String, species: String, type: String, gender: String, image: String) {
+    public init(id: Int, name: String, status: String, species: String, type: String, gender: String, image: String?) {
         self.id = id
         self.name = name
         self.status = status

@@ -7,7 +7,7 @@
 
 import Foundation
  
-public class LocalCharacter: Equatable {
+public struct LocalCharacter: Equatable {
     public let id: Int
     public let name: String
     public let status: String

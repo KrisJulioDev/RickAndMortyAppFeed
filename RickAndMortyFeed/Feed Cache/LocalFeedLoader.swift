@@ -26,12 +26,12 @@ extension LocalFeedLoader {
 }
 
 extension LocalFeedLoader {
-    public func load() throws -> (feed: [CharacterItem], info: Info?) {
+    public func load() throws -> CacheFeed? {
         if let cache = try store.retrieve() {
-            return (cache.feed.model(), cache.info)
+            return cache
         }
         
-        return ([], nil)
+        return nil
     }
 }
 

@@ -14,6 +14,9 @@
 		359C090B2B1F41DB00780967 /* RickAndMortyFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D363192B1E991100499E0D /* RickAndMortyFeed.framework */; };
 		359C09532B1FE57900780967 /* CharacterFeedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359C09522B1FE57900780967 /* CharacterFeedResult.swift */; };
 		359C09572B1FE71600780967 /* FeedCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359C09562B1FE71600780967 /* FeedCacheUseCaseTests.swift */; };
+		35C0758C2B1FEBFA00B379CE /* LocalCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C0758B2B1FEBFA00B379CE /* LocalCharacter.swift */; };
+		35C0758E2B1FED7F00B379CE /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C0758D2B1FED7F00B379CE /* LocalFeedLoader.swift */; };
+		35C075902B1FED9900B379CE /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C0758F2B1FED9900B379CE /* FeedStore.swift */; };
 		35D363222B1E991100499E0D /* RickAndMortyFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D363192B1E991100499E0D /* RickAndMortyFeed.framework */; };
 		35D363272B1E991100499E0D /* FeedAPIEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D363262B1E991100499E0D /* FeedAPIEndpointTests.swift */; };
 		35D363282B1E991100499E0D /* RickAndMortyFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = 35D3631C2B1E991100499E0D /* RickAndMortyFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +56,9 @@
 		359C09092B1F41DB00780967 /* RickAndMortyFeedEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyFeedEndToEndTests.swift; sourceTree = "<group>"; };
 		359C09522B1FE57900780967 /* CharacterFeedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFeedResult.swift; sourceTree = "<group>"; };
 		359C09562B1FE71600780967 /* FeedCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		35C0758B2B1FEBFA00B379CE /* LocalCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCharacter.swift; sourceTree = "<group>"; };
+		35C0758D2B1FED7F00B379CE /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
+		35C0758F2B1FED9900B379CE /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		35D363192B1E991100499E0D /* RickAndMortyFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RickAndMortyFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D3631C2B1E991100499E0D /* RickAndMortyFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RickAndMortyFeed.h; sourceTree = "<group>"; };
 		35D363212B1E991100499E0D /* RickAndMortyFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +122,9 @@
 		359C09542B1FE59A00780967 /* Feed Cache */ = {
 			isa = PBXGroup;
 			children = (
+				35C0758B2B1FEBFA00B379CE /* LocalCharacter.swift */,
+				35C0758D2B1FED7F00B379CE /* LocalFeedLoader.swift */,
+				35C0758F2B1FED9900B379CE /* FeedStore.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -366,9 +375,12 @@
 				35D363392B1E993200499E0D /* HTTPClientTask.swift in Sources */,
 				359C08FB2B1F2FE700780967 /* CharacterFeedMapper.swift in Sources */,
 				359C09022B1F3FE500780967 /* Page.swift in Sources */,
+				35C075902B1FED9900B379CE /* FeedStore.swift in Sources */,
 				359C09532B1FE57900780967 /* CharacterFeedResult.swift in Sources */,
 				35D363332B1E992400499E0D /* CharacterLoader.swift in Sources */,
+				35C0758C2B1FEBFA00B379CE /* LocalCharacter.swift in Sources */,
 				35D3633F2B1E9DC600499E0D /* FeedEndpoint.swift in Sources */,
+				35C0758E2B1FED7F00B379CE /* LocalFeedLoader.swift in Sources */,
 				35D363482B1EAAC600499E0D /* CharacterItem.swift in Sources */,
 				35D3633A2B1E993200499E0D /* HTTPClient.swift in Sources */,
 				35D363382B1E993200499E0D /* URLSessionHTTPClient.swift in Sources */,

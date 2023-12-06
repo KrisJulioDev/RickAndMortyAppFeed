@@ -26,6 +26,14 @@ class FeedStoreSpy: FeedStore {
         return try retrievalResult?.get()
     }
     
+    func retrieveSuccesfully(with feed: CacheFeed) {
+        retrievalResult = .success(feed)
+    }
+    
+    func retrieveCompleted(with error: Error) {
+        retrievalResult = .failure(error)
+    }
+    
     func save(feed: [LocalCharacter], timestamp: Date) throws {
         receivedMessages.append(.insert(feed, timestamp))
         try insertionResult?.get()

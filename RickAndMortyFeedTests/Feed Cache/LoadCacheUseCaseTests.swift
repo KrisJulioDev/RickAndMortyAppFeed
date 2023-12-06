@@ -16,6 +16,22 @@ class LoadCacheUseCaseTests: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [])
     }
 
+    func test_load_completedWithErrorDoesNotRetrieve() {
+        let (sut, store) = makeSUT()
+        let anyError = anyError()
+
+        store.retrieveCompleted(with: anyError)
+
+        var capturedError: NSError?
+        do {
+            _ = try sut.load()
+        } catch {
+            capturedError = error as NSError
+        }
+        
+        XCTAssertEqual(anyError, capturedError)
+    }
+    
     // MARK: Helpers
     
     func makeSUT(currentDate: @escaping () -> Date = Date.init,

@@ -21,7 +21,7 @@ final class FeedCacheUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let deletionError = anyError()
         
-        store.completeDeletion(with: deletionError)
+        store.deletionComplete(with: deletionError)
         
         try? sut.save([])
         
@@ -33,14 +33,38 @@ final class FeedCacheUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT { timestamp }
         let feed = feedCharacters()
         
-        store.completedDeletion()
+        store.deletionCompletedSuccesfully()
         
         try? sut.save(feed.model)
         
-        XCTAssertEqual(store.receivedMessages, [.deleteCache, .insert(feed.local, timestamp)]) 
+        XCTAssertEqual(store.receivedMessages, [.deleteCache, .insert(feed.local, timestamp)])
+    }
+    
+    func test_save_failsOnDeletionError() {
+        let (sut, store) = makeSUT()
+        let error = anyError()
+        
+        expect(sut, toCompleteWith: error) {
+            store.deletionComplete(with: error)
+        }
     }
      
     // MARK: Helpers
+    
+    func expect(_ sut: LocalFeedLoader, toCompleteWith error: NSError, when action: @escaping () -> Void) {
+        let feed = feedCharacters().model
+        
+        action()
+        
+        var capturedError: NSError?
+        do {
+            try sut.save(feed)
+        } catch {
+            capturedError = error as NSError
+        }
+        
+        XCTAssertEqual(error, capturedError)
+    }
     
     func makeSUT(currentDate: @escaping () -> Date = Date.init) -> (loader: LocalFeedLoader, store: FeedStoreSpy) {
         let storeSpy = FeedStoreSpy()
@@ -72,7 +96,7 @@ final class FeedCacheUseCaseTests: XCTestCase {
             try? insertionResult?.get()
         }
         
-        func completeInsertion(with error: Error) {
+        func insertionCompleted(with error: Error) {
             insertionResult = .failure(error)
         }
         
@@ -81,11 +105,11 @@ final class FeedCacheUseCaseTests: XCTestCase {
             try deletionResult?.get()
         }
         
-        func completeDeletion(with error: Error) {
+        func deletionComplete(with error: Error) {
             deletionResult = .failure(error)
         }
         
-        func completedDeletion() {
+        func deletionCompletedSuccesfully() {
             deletionResult = .success(())
         }
     }

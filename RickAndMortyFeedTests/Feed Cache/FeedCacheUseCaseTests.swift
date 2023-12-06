@@ -48,23 +48,18 @@ final class FeedCacheUseCaseTests: XCTestCase {
             store.deletionComplete(with: error)
         }
     }
+    
+    func test_save_failsOnSavingError() {
+        let (sut, store) = makeSUT()
+        let error = anyError()
+        
+        expect(sut, toCompleteWith: error, when: {
+            store.deletionCompletedSuccesfully()
+            store.insertionCompleted(with: error)
+        })
+    }
      
     // MARK: Helpers
-    
-    func expect(_ sut: LocalFeedLoader, toCompleteWith error: NSError, when action: @escaping () -> Void) {
-        let feed = feedCharacters().model
-        
-        action()
-        
-        var capturedError: NSError?
-        do {
-            try sut.save(feed)
-        } catch {
-            capturedError = error as NSError
-        }
-        
-        XCTAssertEqual(error, capturedError)
-    }
     
     func makeSUT(currentDate: @escaping () -> Date = Date.init) -> (loader: LocalFeedLoader, store: FeedStoreSpy) {
         let storeSpy = FeedStoreSpy()
@@ -93,7 +88,7 @@ final class FeedCacheUseCaseTests: XCTestCase {
         
         func save(feed: [LocalCharacter], timestamp: Date) throws {
             receivedMessages.append(.insert(feed, timestamp))
-            try? insertionResult?.get()
+            try insertionResult?.get()
         }
         
         func insertionCompleted(with error: Error) {
@@ -112,5 +107,20 @@ final class FeedCacheUseCaseTests: XCTestCase {
         func deletionCompletedSuccesfully() {
             deletionResult = .success(())
         }
+    }
+    
+    func expect(_ sut: LocalFeedLoader, toCompleteWith error: NSError, when action: () -> Void) {
+        let feed = feedCharacters().model
+        
+        action()
+        
+        var capturedError: NSError?
+        do {
+            try sut.save(feed)
+        } catch {
+            capturedError = error as NSError
+        }
+        
+        XCTAssertEqual(error, capturedError)
     }
 }

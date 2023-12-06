@@ -27,16 +27,11 @@ extension LocalFeedLoader {
 
 extension LocalFeedLoader {
     public func load() throws -> (feed: [CharacterItem], info: Info?) {
-        if let cache = try store.retrieve(),
-           validate(timestamp: cache.timestamp, current: currentDate()) {
+        if let cache = try store.retrieve() {
             return (cache.feed.model(), cache.info)
         }
         
         return ([], nil)
-    }
-    
-    func validate(timestamp: Date, current: Date) -> Bool {
-        return timestamp < current
     }
 }
 
@@ -47,8 +42,7 @@ extension Array where Element == CharacterItem {
         }
     }
 }
-
-
+ 
 public extension Array where Element == LocalCharacter {
     func model() -> [CharacterItem] {
         map {

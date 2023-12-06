@@ -1,5 +1,5 @@
 //
-//  FeedCacheUseCaseTests.swift
+//  CacheUseCaseTests.swift
 //  RickAndMortyFeedTests
 //
 //  Created by Khristoffer Julio on 12/6/23.
@@ -9,7 +9,7 @@ import XCTest
 import Foundation
 import RickAndMortyFeed
 
-final class FeedCacheUseCaseTests: XCTestCase {
+final class CacheUseCaseTests: XCTestCase {
     
     func test_init_doesNotRetrieveData() {
         let (_, store) = makeSUT()
@@ -49,7 +49,7 @@ final class FeedCacheUseCaseTests: XCTestCase {
         }
     }
     
-    func test_save_failsOnSavingError() {
+    func test_save_failsOnInsertionError() {
         let (sut, store) = makeSUT()
         let error = anyError()
         
@@ -58,58 +58,32 @@ final class FeedCacheUseCaseTests: XCTestCase {
             store.insertionCompleted(with: error)
         })
     }
-     
+    
+    func test_save_successOnSaveCompleted() {
+        let (sut, store) = makeSUT()
+        
+        expect(sut, toCompleteWith: nil, when: {
+            store.deletionCompletedSuccesfully()
+            store.insertionCompletedSuccesfully()
+        })
+    }
+    
     // MARK: Helpers
     
-    func makeSUT(currentDate: @escaping () -> Date = Date.init) -> (loader: LocalFeedLoader, store: FeedStoreSpy) {
+    func makeSUT(currentDate: @escaping () -> Date = Date.init,
+                 file: StaticString = #filePath,
+                 line: UInt = #line
+    ) -> (loader: LocalFeedLoader, store: FeedStoreSpy) {
         let storeSpy = FeedStoreSpy()
         let feedLoader = LocalFeedLoader(store: storeSpy, currentDate: currentDate)
+        
+        trackMemoryLeak(storeSpy, file: file, line: line)
+        trackMemoryLeak(feedLoader, file: file, line: line)
+
         return (feedLoader, storeSpy)
     }
-    
-    class FeedStoreSpy: FeedStore {
-        
-        enum ReceivedMessages: Equatable {
-            case insert([LocalCharacter], Date)
-            case retrieve
-            case deleteCache
-        }
-        
-        private var deletionResult: Result<Void, Error>?
-        private var insertionResult: Result<Void, Error>?
-        private var retrievalResult: Result<CacheFeed?, Error>?
-        
-        var receivedMessages: [ReceivedMessages] = []
-        
-        func retrieve() throws -> CacheFeed? {
-            receivedMessages.append(.retrieve)
-            return try retrievalResult?.get()
-        }
-        
-        func save(feed: [LocalCharacter], timestamp: Date) throws {
-            receivedMessages.append(.insert(feed, timestamp))
-            try insertionResult?.get()
-        }
-        
-        func insertionCompleted(with error: Error) {
-            insertionResult = .failure(error)
-        }
-        
-        func deleteCacheFeed() throws {
-            receivedMessages.append(.deleteCache)
-            try deletionResult?.get()
-        }
-        
-        func deletionComplete(with error: Error) {
-            deletionResult = .failure(error)
-        }
-        
-        func deletionCompletedSuccesfully() {
-            deletionResult = .success(())
-        }
-    }
-    
-    func expect(_ sut: LocalFeedLoader, toCompleteWith error: NSError, when action: () -> Void) {
+ 
+    func expect(_ sut: LocalFeedLoader, toCompleteWith error: NSError?, when action: () -> Void) {
         let feed = feedCharacters().model
         
         action()

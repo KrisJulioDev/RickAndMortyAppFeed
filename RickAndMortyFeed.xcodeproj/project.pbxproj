@@ -13,10 +13,12 @@
 		359C090A2B1F41DB00780967 /* RickAndMortyFeedEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359C09092B1F41DB00780967 /* RickAndMortyFeedEndToEndTests.swift */; };
 		359C090B2B1F41DB00780967 /* RickAndMortyFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D363192B1E991100499E0D /* RickAndMortyFeed.framework */; };
 		359C09532B1FE57900780967 /* CharacterFeedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359C09522B1FE57900780967 /* CharacterFeedResult.swift */; };
-		359C09572B1FE71600780967 /* FeedCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359C09562B1FE71600780967 /* FeedCacheUseCaseTests.swift */; };
+		359C09572B1FE71600780967 /* CacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359C09562B1FE71600780967 /* CacheUseCaseTests.swift */; };
 		35C0758C2B1FEBFA00B379CE /* LocalCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C0758B2B1FEBFA00B379CE /* LocalCharacter.swift */; };
 		35C0758E2B1FED7F00B379CE /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C0758D2B1FED7F00B379CE /* LocalFeedLoader.swift */; };
 		35C075902B1FED9900B379CE /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C0758F2B1FED9900B379CE /* FeedStore.swift */; };
+		35C0759B2B2099CC00B379CE /* LoadCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C0759A2B2099CC00B379CE /* LoadCacheUseCaseTests.swift */; };
+		35C0759D2B209A9300B379CE /* FeedStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C0759C2B209A9300B379CE /* FeedStoreSpy.swift */; };
 		35D363222B1E991100499E0D /* RickAndMortyFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D363192B1E991100499E0D /* RickAndMortyFeed.framework */; };
 		35D363272B1E991100499E0D /* FeedAPIEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D363262B1E991100499E0D /* FeedAPIEndpointTests.swift */; };
 		35D363282B1E991100499E0D /* RickAndMortyFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = 35D3631C2B1E991100499E0D /* RickAndMortyFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -55,10 +57,12 @@
 		359C09072B1F41DB00780967 /* RickAndMortyFeedEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyFeedEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		359C09092B1F41DB00780967 /* RickAndMortyFeedEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyFeedEndToEndTests.swift; sourceTree = "<group>"; };
 		359C09522B1FE57900780967 /* CharacterFeedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFeedResult.swift; sourceTree = "<group>"; };
-		359C09562B1FE71600780967 /* FeedCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		359C09562B1FE71600780967 /* CacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheUseCaseTests.swift; sourceTree = "<group>"; };
 		35C0758B2B1FEBFA00B379CE /* LocalCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCharacter.swift; sourceTree = "<group>"; };
 		35C0758D2B1FED7F00B379CE /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
 		35C0758F2B1FED9900B379CE /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
+		35C0759A2B2099CC00B379CE /* LoadCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCacheUseCaseTests.swift; sourceTree = "<group>"; };
+		35C0759C2B209A9300B379CE /* FeedStoreSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreSpy.swift; sourceTree = "<group>"; };
 		35D363192B1E991100499E0D /* RickAndMortyFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RickAndMortyFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D3631C2B1E991100499E0D /* RickAndMortyFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RickAndMortyFeed.h; sourceTree = "<group>"; };
 		35D363212B1E991100499E0D /* RickAndMortyFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +136,8 @@
 		359C09552B1FE5AD00780967 /* Feed Cache */ = {
 			isa = PBXGroup;
 			children = (
-				359C09562B1FE71600780967 /* FeedCacheUseCaseTests.swift */,
+				359C09562B1FE71600780967 /* CacheUseCaseTests.swift */,
+				35C0759A2B2099CC00B379CE /* LoadCacheUseCaseTests.swift */,
 			);
 			path = "Feed Cache";
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				35D363402B1E9FAD00499E0D /* XCTestsCase+Helpers.swift */,
+				35C0759C2B209A9300B379CE /* FeedStoreSpy.swift */,
 			);
 			path = "Shared Helpers";
 			sourceTree = "<group>";
@@ -392,8 +398,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				359C08FD2B1F370A00780967 /* JSON+Helpers.swift in Sources */,
+				35C0759B2B2099CC00B379CE /* LoadCacheUseCaseTests.swift in Sources */,
+				35C0759D2B209A9300B379CE /* FeedStoreSpy.swift in Sources */,
 				35D363412B1E9FAD00499E0D /* XCTestsCase+Helpers.swift in Sources */,
-				359C09572B1FE71600780967 /* FeedCacheUseCaseTests.swift in Sources */,
+				359C09572B1FE71600780967 /* CacheUseCaseTests.swift in Sources */,
 				35D363272B1E991100499E0D /* FeedAPIEndpointTests.swift in Sources */,
 				35D3633D2B1E993A00499E0D /* URLProtocolStub.swift in Sources */,
 				35D363452B1EA77E00499E0D /* FeedItemMapperTests.swift in Sources */,

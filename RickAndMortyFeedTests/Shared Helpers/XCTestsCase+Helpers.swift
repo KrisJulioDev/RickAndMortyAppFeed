@@ -6,6 +6,7 @@
 //
 
 import RickAndMortyFeed
+import XCTest
 
 func anyURL() -> URL { URL(string: "any-url")! }
 
@@ -20,4 +21,12 @@ func feedCharacters() -> (model: [CharacterItem], local: [LocalCharacter]) {
     let local = [LocalCharacter(id: 1, name: "", status: "", species: "", type: "", gender: "", image: nil)]
     
     return (model, local)
+} 
+
+extension XCTestCase {
+    func trackMemoryLeak(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should be nil, potential memory leaks", file: file, line: line)
+        }
+    }
 }

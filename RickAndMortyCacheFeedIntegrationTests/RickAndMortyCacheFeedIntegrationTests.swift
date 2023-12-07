@@ -18,24 +18,45 @@ final class RickAndMortyCacheFeedIntegrationTests: XCTestCase {
         undoSideEffectState()
     }
     
-    func test_load_emptyFeedRetrievesEmptyData() {
+    func test_loadEmptyFeed_retrievesEmptyData() {
         let sut = try? makeFeedLoader()
         
         do {
             let cache = try sut?.load()
             XCTAssertEqual(cache?.feed, [])
+            XCTAssertEqual(cache?.info, nil)
         } catch {
             XCTFail("Expects to load something, got \(error)")
         }
+    }
+    
+    func test_loadFeed_deliversItemsSavedOnDifferenceInstance() throws {
+        let sutToPerformSave = try makeFeedLoader()
+        let sutToPerformLoad = try makeFeedLoader()
+        let saved = anyFeedCharacters()
         
+        do {
+            try sutToPerformSave.save(saved.local, info: anyInfo())
+            let loaded = try sutToPerformLoad.load()
+            XCTAssertEqual(saved.local, loaded.feed)
+        } catch {
+            XCTFail("Expects success returning feeds, got \(error)")
+        }
     }
     
     // MARK: Helpers
     
-    func makeFeedLoader(currentDate: Date = Date()) throws -> LocalFeedLoader {
+    func makeFeedLoader(
+        currentDate: Date = Date(),
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) throws -> LocalFeedLoader {
         let storeURL = storeTestURL()
         let feedStore = try CoreDataFeedStore(storeURL: storeURL)
         let loader = LocalFeedLoader(store: feedStore, currentDate: { currentDate })
+        
+        trackMemoryLeak(feedStore, file: file, line: line)
+        trackMemoryLeak(loader, file: file, line: line)
         
         return loader
     }

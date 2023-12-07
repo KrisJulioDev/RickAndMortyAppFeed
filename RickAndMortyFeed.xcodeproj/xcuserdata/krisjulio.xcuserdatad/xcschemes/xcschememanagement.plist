@@ -14,11 +14,6 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>RickAndMortyFeedCacheIntegrationTests.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
 		<key>RickAndMortyFeedEndToEndTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -28,6 +23,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>359C09062B1F41DB00780967</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>35C075C52B21476F00B379CE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

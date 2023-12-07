@@ -25,6 +25,7 @@
 		35C075A72B2141A900B379CE /* CoreDataHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C075A62B2141A900B379CE /* CoreDataHelpers.swift */; };
 		35C075C92B21476F00B379CE /* RickAndMortyCacheFeedIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C075C82B21476F00B379CE /* RickAndMortyCacheFeedIntegrationTests.swift */; };
 		35C075CA2B21476F00B379CE /* RickAndMortyFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D363192B1E991100499E0D /* RickAndMortyFeed.framework */; };
+		35C075D22B21A26300B379CE /* XCTestsCase+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C075D02B21A24D00B379CE /* XCTestsCase+Helpers.swift */; };
 		35D363222B1E991100499E0D /* RickAndMortyFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D363192B1E991100499E0D /* RickAndMortyFeed.framework */; };
 		35D363272B1E991100499E0D /* FeedAPIEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D363262B1E991100499E0D /* FeedAPIEndpointTests.swift */; };
 		35D363282B1E991100499E0D /* RickAndMortyFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = 35D3631C2B1E991100499E0D /* RickAndMortyFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -82,6 +83,7 @@
 		35C075A62B2141A900B379CE /* CoreDataHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelpers.swift; sourceTree = "<group>"; };
 		35C075C62B21476F00B379CE /* RickAndMortyCacheFeedIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyCacheFeedIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35C075C82B21476F00B379CE /* RickAndMortyCacheFeedIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyCacheFeedIntegrationTests.swift; sourceTree = "<group>"; };
+		35C075D02B21A24D00B379CE /* XCTestsCase+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestsCase+Helpers.swift"; sourceTree = "<group>"; };
 		35D363192B1E991100499E0D /* RickAndMortyFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RickAndMortyFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D3631C2B1E991100499E0D /* RickAndMortyFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RickAndMortyFeed.h; sourceTree = "<group>"; };
 		35D363212B1E991100499E0D /* RickAndMortyFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +186,7 @@
 		35C075C72B21476F00B379CE /* RickAndMortyCacheFeedIntegrationTests */ = {
 			isa = PBXGroup;
 			children = (
+				35C075D02B21A24D00B379CE /* XCTestsCase+Helpers.swift */,
 				35C075C82B21476F00B379CE /* RickAndMortyCacheFeedIntegrationTests.swift */,
 			);
 			path = RickAndMortyCacheFeedIntegrationTests;
@@ -456,6 +459,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35C075D22B21A26300B379CE /* XCTestsCase+Helpers.swift in Sources */,
 				35C075C92B21476F00B379CE /* RickAndMortyCacheFeedIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

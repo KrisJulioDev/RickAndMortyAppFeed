@@ -16,7 +16,7 @@ class LoadCacheUseCaseTests: XCTestCase {
         XCTAssertEqual(store.receivedMessages, [])
     }
 
-    func test_load_completedWithErrorDoesNotRetrieve() {
+    func test_load_completedWithErrorDoesNotRetrieveData() {
         let (sut, store) = makeSUT()
         let anyError = anyError()
 
@@ -34,7 +34,7 @@ class LoadCacheUseCaseTests: XCTestCase {
     
     func test_load_retrieveEmptyFeedOnEmptyData() {
         let (sut, store) = makeSUT()
-        let emptyFeed = CacheFeed(feed: [], info: nil, timestamp: Date())
+        let emptyFeed = CacheFeed(feed: [], info: nil)
         store.retrieveSuccesfully(with: emptyFeed)
         
         var capturedFeed: CacheFeed?
@@ -48,6 +48,22 @@ class LoadCacheUseCaseTests: XCTestCase {
         XCTAssertTrue(capturedFeed!.feed.isEmpty)
     }
     
+    func test_load_retrievesDataOnCompleteWithData() {
+        let (sut, store) = makeSUT()
+        let expectedFeeds = feedCharacters()
+        let feed = CacheFeed(feed: expectedFeeds.local, info: nil)
+        store.retrieveSuccesfully(with: feed)
+
+        var capturedFeed: CacheFeed?
+        do {
+            capturedFeed = try sut.load()
+        } catch {
+            XCTFail("Expects success, got \(error)")
+        }
+        
+        XCTAssertEqual(expectedFeeds.model, capturedFeed?.feed.model())
+    }
+     
     // MARK: Helpers
     
     func makeSUT(currentDate: @escaping () -> Date = Date.init,

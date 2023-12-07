@@ -7,10 +7,10 @@
 
 import Foundation
 
-public typealias CacheFeed = (feed: [LocalCharacter], info: Info?, timestamp: Date)
+public typealias CacheFeed = (feed: [LocalCharacter], info: Info?)
 
 public protocol FeedStore {
-    func save(feed: [LocalCharacter], timestamp: Date) throws
+    func save(feed: [LocalCharacter], info: Info) throws
     func retrieve() throws -> CacheFeed?
     func deleteCacheFeed() throws
 }

@@ -55,9 +55,9 @@ final class RickAndMortyFeedEndToEndTests: XCTestCase {
     
     // MARK: - Helpers
     
-    func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> CharacterLoader {
+    func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> RemoteLoader {
         let client = URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
-        let loader = CharacterLoader(client: client)
+        let loader = RemoteLoader(client: client)
          
         trackMemoryLeak(client, file: file, line: line)
         trackMemoryLeak(loader, file: file, line: line)

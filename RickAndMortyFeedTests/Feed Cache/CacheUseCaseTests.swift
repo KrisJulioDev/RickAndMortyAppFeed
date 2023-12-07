@@ -20,10 +20,10 @@ final class CacheUseCaseTests: XCTestCase {
     func test_save_doesNotRequestInsertionOnDeletionError() throws {
         let (sut, store) = makeSUT()
         let deletionError = anyError()
-        
+        let info = anyInfo()
         store.deletionComplete(with: deletionError)
         
-        try? sut.save([])
+        try? sut.save([], info: info)
         
         XCTAssertEqual(store.receivedMessages, [.deleteCache])
     }
@@ -32,12 +32,13 @@ final class CacheUseCaseTests: XCTestCase {
         let timestamp = Date()
         let (sut, store) = makeSUT { timestamp }
         let feed = feedCharacters()
+        let info = anyInfo()
         
         store.deletionCompletedSuccesfully()
         
-        try? sut.save(feed.model)
+        try? sut.save(feed.local, info: info)
         
-        XCTAssertEqual(store.receivedMessages, [.deleteCache, .insert(feed.local, timestamp)])
+        XCTAssertEqual(store.receivedMessages, [.deleteCache, .insert(feed.local, info)])
     }
     
     func test_save_failsOnDeletionError() {
@@ -84,13 +85,14 @@ final class CacheUseCaseTests: XCTestCase {
     }
  
     func expect(_ sut: LocalFeedLoader, toCompleteWith error: NSError?, when action: () -> Void) {
-        let feed = feedCharacters().model
+        let feed = feedCharacters()
+        let info = anyInfo()
         
         action()
         
         var capturedError: NSError?
         do {
-            try sut.save(feed)
+            try sut.save(feed.local, info: info)
         } catch {
             capturedError = error as NSError
         }

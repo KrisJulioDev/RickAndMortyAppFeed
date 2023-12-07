@@ -13,7 +13,7 @@ public protocol FeedLoader {
     func get(from url: URL, completion: (@escaping (Result) -> Void))
 }
 
-public class CharacterLoader: FeedLoader {
+public class RemoteLoader: FeedLoader {
     private let client: URLSessionHTTPClient
     private var task: HTTPClientTask?
     
@@ -22,7 +22,6 @@ public class CharacterLoader: FeedLoader {
     }
     
     public enum Error: Swift.Error {
-        case invalidResponse
         case mappingError
     }
     

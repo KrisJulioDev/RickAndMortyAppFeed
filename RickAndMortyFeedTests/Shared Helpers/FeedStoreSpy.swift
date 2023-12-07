@@ -8,9 +8,8 @@
 import RickAndMortyFeed
 
 class FeedStoreSpy: FeedStore {
-    
     enum ReceivedMessages: Equatable {
-        case insert([LocalCharacter], Date)
+        case insert([LocalCharacter], Info)
         case retrieve
         case deleteCache
     }
@@ -34,8 +33,8 @@ class FeedStoreSpy: FeedStore {
         retrievalResult = .failure(error)
     }
     
-    func save(feed: [LocalCharacter], timestamp: Date) throws {
-        receivedMessages.append(.insert(feed, timestamp))
+    func save(feed: [LocalCharacter], info: Info) throws {
+        receivedMessages.append(.insert(feed, info))
         try insertionResult?.get()
     }
     

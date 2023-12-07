@@ -14,9 +14,9 @@ public struct LocalCharacter: Equatable {
     public let species: String
     public let type: String
     public let gender: String
-    public var image: URL?
+    public var image: URL
     
-    public init(id: Int, name: String, status: String, species: String, type: String, gender: String, image: URL?) {
+    public init(id: Int, name: String, status: String, species: String, type: String, gender: String, image: URL) {
         self.id = id
         self.name = name
         self.status = status

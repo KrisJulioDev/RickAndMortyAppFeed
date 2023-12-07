@@ -18,21 +18,21 @@ final class RickAndMortyCacheFeedIntegrationTests: XCTestCase {
         undoSideEffectState()
     }
     
-    func test_loadEmptyFeed_retrievesEmptyData() {
-        let sut = try? makeFeedLoader()
+    func test_loadEmptyFeed_retrievesEmptyData() throws {
+        let (_, sut) = try makeFeedLoader()
         
         do {
-            let cache = try sut?.load()
-            XCTAssertEqual(cache?.feed, [])
-            XCTAssertEqual(cache?.info, nil)
+            let cache = try sut.load()
+            XCTAssertEqual(cache.feed, [])
+            XCTAssertEqual(cache.info, nil)
         } catch {
             XCTFail("Expects to load something, got \(error)")
         }
     }
     
     func test_loadFeed_deliversItemsSavedOnDifferenceInstance() throws {
-        let sutToPerformSave = try makeFeedLoader()
-        let sutToPerformLoad = try makeFeedLoader()
+        let (_, sutToPerformSave) = try makeFeedLoader()
+        let (_, sutToPerformLoad) = try makeFeedLoader()
         let saved = anyFeedCharacters()
         
         do {
@@ -44,21 +44,37 @@ final class RickAndMortyCacheFeedIntegrationTests: XCTestCase {
         }
     }
     
+    func test_delete_hasNoErrorOnEmptyCache() throws {
+        let (store, _) = try makeFeedLoader()
+        
+        let deletionError = deleteCacheFeed(sut: store)
+        XCTAssertNil(deletionError, "Expects no error on empty cache deletion")
+    }
+    
     // MARK: Helpers
     
     func makeFeedLoader(
         currentDate: Date = Date(),
         file: StaticString = #filePath,
         line: UInt = #line
-    ) throws -> LocalFeedLoader {
+    ) throws -> (store: CoreDataFeedStore, loader: LocalFeedLoader) {
         let storeURL = storeTestURL()
-        let feedStore = try CoreDataFeedStore(storeURL: storeURL)
-        let loader = LocalFeedLoader(store: feedStore, currentDate: { currentDate })
+        let store = try CoreDataFeedStore(storeURL: storeURL)
+        let loader = LocalFeedLoader(store: store, currentDate: { currentDate })
         
-        trackMemoryLeak(feedStore, file: file, line: line)
+        trackMemoryLeak(store, file: file, line: line)
         trackMemoryLeak(loader, file: file, line: line)
         
-        return loader
+        return (store, loader)
+    }
+    
+    func deleteCacheFeed(sut: FeedStore) -> Error? {
+        do {
+            try sut.deleteCacheFeed()
+            return nil
+        } catch {
+            return error
+        }
     }
     
     func setupEmptyStoreState() {

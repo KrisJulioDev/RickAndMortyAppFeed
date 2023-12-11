@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RickAndMortyFeed
 
 public protocol FeedImageCellControllerDelegate {
     func didRequestImage()

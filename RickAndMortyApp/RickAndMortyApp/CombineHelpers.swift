@@ -4,8 +4,7 @@
 //
 //  Created by Khristoffer Julio on 12/8/23.
 //
-
-import Foundation
+ 
 import Combine
 import RickAndMortyFeed
 
@@ -42,7 +41,8 @@ extension HTTPClient {
 
 extension Publisher {
     func dispatchOnMainQueue() -> AnyPublisher<Output, Failure> {
-        receive(on: DispatchQueue.immediateWhenOnMainQueueScheduler).eraseToAnyPublisher()
+        receive(on: DispatchQueue.immediateWhenOnMainQueueScheduler)
+            .eraseToAnyPublisher()
     }
 }
 

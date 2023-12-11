@@ -11,7 +11,9 @@ import Foundation
 public enum FeedEndpoint {
     case get(_ page: Page? = nil)
     
-    public static var initialURL: URL { URL(string: "https://rickandmortyapi.com/api/character")! }
+    public static var initialURL: URL {
+        URL(string: "https://rickandmortyapi.com/api/character")!
+    }
 
     public var url: URL {
         switch self {

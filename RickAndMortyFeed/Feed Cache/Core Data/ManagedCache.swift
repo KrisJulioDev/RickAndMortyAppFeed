@@ -35,36 +35,7 @@ extension ManagedCache {
         return ManagedCache(context: context)
     }
 }
-
-@objc (ManagedFeed)
-class ManagedFeed: NSManagedObject {
-    @NSManaged var id: Int
-    @NSManaged var name: String
-    @NSManaged var status: String
-    @NSManaged var species: String
-    @NSManaged var type: String
-    @NSManaged var gender: String
-    @NSManaged var image: URL
-    @NSManaged var data: Data?
-    
-    static func images(from localFeed: [LocalCharacter], in context: NSManagedObjectContext) -> NSOrderedSet {
-        let feeds = NSOrderedSet(array: localFeed.map { feed in
-            let managedFeed = ManagedFeed(context: context)
-            managedFeed.id = feed.id
-            managedFeed.name = feed.name
-            managedFeed.gender = feed.gender
-            managedFeed.type = feed.type
-            managedFeed.status = feed.status
-            managedFeed.species = feed.species
-            managedFeed.image = feed.image
-            managedFeed.data = context.userInfo[feed.image] as? Data
-            return managedFeed
-        })
-        context.userInfo.removeAllObjects()
-        return feeds
-    }
-}
-
+ 
 @objc (ManagedInfo)
 class ManagedInfo: NSManagedObject {
     @NSManaged var count: Int

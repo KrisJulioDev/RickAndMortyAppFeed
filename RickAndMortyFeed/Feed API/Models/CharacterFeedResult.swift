@@ -15,8 +15,8 @@ public class CharacterFeedResult: Decodable {
 public class Info: Decodable, Equatable {
     let count: Int
     let pages: Int
-    let next: String?
-    let prev: String?
+    public let next: String?
+    public let prev: String?
     
     public init(count: Int, pages: Int, next: String?, prev: String?) {
         self.count = count

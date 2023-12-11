@@ -15,5 +15,6 @@ public class Page  {
     }
 }
 
-public class NextPage: Page {}
+public class NextPage: Page { 
+}
 public class PreviousPage: Page {}

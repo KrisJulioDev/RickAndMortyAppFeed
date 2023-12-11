@@ -35,6 +35,7 @@ public final class LoadResourcePresentationAdapter<Resource, View: ResourceView>
                 case .failure(let error):
                     self?.presenter?.didFinishLoading(with: error)
                 }
+                self?.isLoading = false
             }, receiveValue: { [weak self] resource in
                 self?.presenter?.didFinishLoading(with: resource)
             })

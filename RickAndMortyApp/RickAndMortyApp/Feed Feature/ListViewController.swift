@@ -6,12 +6,12 @@
 //
 
 import Foundation
-import UIKit
-
+import UIKit 
 
 public final class ListViewController: UITableViewController {
     
     @IBOutlet private(set) weak var loadingView: LoadingView!
+    public var onRefresh: (() -> Void)?
     
     private lazy var dataSource: UITableViewDiffableDataSource<Int, CellController> = {
         .init(tableView: tableView) { tableView, indexPath, controller in
@@ -22,6 +22,7 @@ public final class ListViewController: UITableViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        onRefresh?()
     }
     
     private func configureTableView() {

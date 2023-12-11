@@ -39,10 +39,33 @@ extension HTTPClient {
     }
 }
 
+extension Publisher where Output == Data {
+    func caching(to cache: FeedImageDataCache, using url: URL) -> AnyPublisher<Output, Failure> {
+        self.handleEvents(receiveOutput: { data in
+            cache.saveIgnoringCache(data, for: url)
+        })
+        .eraseToAnyPublisher()
+    }
+    
+}
+
+private extension FeedImageDataCache {
+    func saveIgnoringCache(_ data: Data, for url: URL) {
+        try? save(data, for: url)
+    }
+}
+
 extension Publisher {
     func dispatchOnMainQueue() -> AnyPublisher<Output, Failure> {
         receive(on: DispatchQueue.immediateWhenOnMainQueueScheduler)
             .eraseToAnyPublisher()
+    }
+}
+
+extension Publisher {
+    func fallback(to fallbackPublisher: @escaping () -> AnyPublisher<Output, Failure>)
+    -> AnyPublisher<Output, Failure> {
+        self.catch { _ in fallbackPublisher() }.eraseToAnyPublisher()
     }
 }
 

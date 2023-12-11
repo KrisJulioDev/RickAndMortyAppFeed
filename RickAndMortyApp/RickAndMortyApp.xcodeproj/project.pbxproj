@@ -10,6 +10,9 @@
 		356E223F2B25408E00B1B3E2 /* LoadResourcePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E223E2B25408E00B1B3E2 /* LoadResourcePresenter.swift */; };
 		356E22412B2540CD00B1B3E2 /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E22402B2540CD00B1B3E2 /* NullStore.swift */; };
 		356E22492B270AEE00B1B3E2 /* LoadResourcePresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E22482B270AEE00B1B3E2 /* LoadResourcePresentationAdapter.swift */; };
+		356E224D2B27188A00B1B3E2 /* WeakVirtualRefProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E224C2B27188A00B1B3E2 /* WeakVirtualRefProxy.swift */; };
+		356E224F2B271AD100B1B3E2 /* FeedImagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E224E2B271AD100B1B3E2 /* FeedImagePresenter.swift */; };
+		356E22522B271FBE00B1B3E2 /* UIImageView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E22512B271FBE00B1B3E2 /* UIImageView+Animations.swift */; };
 		359C091E2B1FDE0F00780967 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359C091D2B1FDE0F00780967 /* AppDelegate.swift */; };
 		359C09202B1FDE0F00780967 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359C091F2B1FDE0F00780967 /* SceneDelegate.swift */; };
 		359C09272B1FDE1100780967 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359C09262B1FDE1100780967 /* Assets.xcassets */; };
@@ -22,7 +25,6 @@
 		35C319FA2B2290330015F8FF /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C319F92B2290330015F8FF /* CellController.swift */; };
 		35C319FC2B2296A30015F8FF /* FeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C319FB2B2296A30015F8FF /* FeedUIComposer.swift */; };
 		35C319FE2B229AEA0015F8FF /* FeedViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C319FD2B229AEA0015F8FF /* FeedViewAdapter.swift */; };
-		35C31A012B229B4C0015F8FF /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C31A002B229B4C0015F8FF /* FeedImageDataLoader.swift */; };
 		35C31A032B229B920015F8FF /* CombineHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C31A022B229B920015F8FF /* CombineHelpers.swift */; };
 		35C31A092B22C44B0015F8FF /* RickAndMortyFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C31A052B229F5C0015F8FF /* RickAndMortyFeed.framework */; };
 		35C31A0A2B22C44B0015F8FF /* RickAndMortyFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35C31A052B229F5C0015F8FF /* RickAndMortyFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -57,6 +59,9 @@
 		356E223E2B25408E00B1B3E2 /* LoadResourcePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresenter.swift; sourceTree = "<group>"; };
 		356E22402B2540CD00B1B3E2 /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 		356E22482B270AEE00B1B3E2 /* LoadResourcePresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresentationAdapter.swift; sourceTree = "<group>"; };
+		356E224C2B27188A00B1B3E2 /* WeakVirtualRefProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakVirtualRefProxy.swift; sourceTree = "<group>"; };
+		356E224E2B271AD100B1B3E2 /* FeedImagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImagePresenter.swift; sourceTree = "<group>"; };
+		356E22512B271FBE00B1B3E2 /* UIImageView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animations.swift"; sourceTree = "<group>"; };
 		359C091A2B1FDE0F00780967 /* RickAndMortyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		359C091D2B1FDE0F00780967 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		359C091F2B1FDE0F00780967 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +77,6 @@
 		35C319F92B2290330015F8FF /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 		35C319FB2B2296A30015F8FF /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
 		35C319FD2B229AEA0015F8FF /* FeedViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewAdapter.swift; sourceTree = "<group>"; };
-		35C31A002B229B4C0015F8FF /* FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedImageDataLoader.swift; path = "../../../RickAndMortyFeed/Feed Loader/FeedImageDataLoader.swift"; sourceTree = "<group>"; };
 		35C31A022B229B920015F8FF /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
 		35C31A052B229F5C0015F8FF /* RickAndMortyFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RickAndMortyFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35F852392B22D81F003995EF /* FeedTableCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableCellController.swift; sourceTree = "<group>"; };
@@ -105,6 +109,14 @@
 			path = "Feed Cache";
 			sourceTree = "<group>";
 		};
+		356E22502B271FB800B1B3E2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				356E22512B271FBE00B1B3E2 /* UIImageView+Animations.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		359C09112B1FDE0F00780967 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +140,7 @@
 		359C091C2B1FDE0F00780967 /* RickAndMortyApp */ = {
 			isa = PBXGroup;
 			children = (
+				356E22502B271FB800B1B3E2 /* Helpers */,
 				359C091D2B1FDE0F00780967 /* AppDelegate.swift */,
 				359C091F2B1FDE0F00780967 /* SceneDelegate.swift */,
 				35C319FB2B2296A30015F8FF /* FeedUIComposer.swift */,
@@ -135,6 +148,7 @@
 				35C31A022B229B920015F8FF /* CombineHelpers.swift */,
 				356E223E2B25408E00B1B3E2 /* LoadResourcePresenter.swift */,
 				356E22482B270AEE00B1B3E2 /* LoadResourcePresentationAdapter.swift */,
+				356E224C2B27188A00B1B3E2 /* WeakVirtualRefProxy.swift */,
 				356E222E2B2433E300B1B3E2 /* Feed Cache */,
 				359C094F2B1FDF2100780967 /* Feed Feature */,
 				35C319FF2B229B3B0015F8FF /* Feed Presentation */,
@@ -166,7 +180,6 @@
 				35C319F92B2290330015F8FF /* CellController.swift */,
 				359C094D2B1FDEE200780967 /* Feed.storyboard */,
 				359C09502B1FDF5D00780967 /* ListViewController.swift */,
-				35C31A002B229B4C0015F8FF /* FeedImageDataLoader.swift */,
 			);
 			path = "Feed Feature";
 			sourceTree = "<group>";
@@ -175,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				35C319F42B21D89A0015F8FF /* FeedTableViewCell.swift */,
+				356E224E2B271AD100B1B3E2 /* FeedImagePresenter.swift */,
 				35C319F62B2288DC0015F8FF /* LoadingView.swift */,
 				35F852392B22D81F003995EF /* FeedTableCellController.swift */,
 			);
@@ -292,16 +306,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				35C319FE2B229AEA0015F8FF /* FeedViewAdapter.swift in Sources */,
+				356E22522B271FBE00B1B3E2 /* UIImageView+Animations.swift in Sources */,
 				359C091E2B1FDE0F00780967 /* AppDelegate.swift in Sources */,
 				35C319F72B2288DC0015F8FF /* LoadingView.swift in Sources */,
 				35F8523A2B22D81F003995EF /* FeedTableCellController.swift in Sources */,
+				356E224F2B271AD100B1B3E2 /* FeedImagePresenter.swift in Sources */,
 				35C31A032B229B920015F8FF /* CombineHelpers.swift in Sources */,
-				35C31A012B229B4C0015F8FF /* FeedImageDataLoader.swift in Sources */,
 				356E223F2B25408E00B1B3E2 /* LoadResourcePresenter.swift in Sources */,
 				35C319F52B21D89A0015F8FF /* FeedTableViewCell.swift in Sources */,
 				35C319FA2B2290330015F8FF /* CellController.swift in Sources */,
 				359C09202B1FDE0F00780967 /* SceneDelegate.swift in Sources */,
 				359C09512B1FDF5D00780967 /* ListViewController.swift in Sources */,
+				356E224D2B27188A00B1B3E2 /* WeakVirtualRefProxy.swift in Sources */,
 				356E22492B270AEE00B1B3E2 /* LoadResourcePresentationAdapter.swift in Sources */,
 				356E22412B2540CD00B1B3E2 /* NullStore.swift in Sources */,
 				35C319FC2B2296A30015F8FF /* FeedUIComposer.swift in Sources */,

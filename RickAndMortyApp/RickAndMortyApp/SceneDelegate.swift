@@ -37,13 +37,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     }()
     
-//    private lazy var navigationController: UINavigationController = UINavigationController(
-//        rootViewController: FeedUIComposer.composeWith(
-//            feedLoader: makeRemoteFeedLoaderWithLocalFallback,
-//            imageLoader: <#T##(URL) -> AnyPublisher<Data, Error>#>, selection: <#T##(CharacterItem) -> Void#>))
+    private lazy var navigationController: UINavigationController = UINavigationController(
+        rootViewController: FeedUIComposer.composeWith(
+            feedLoader: makeRemoteFeedLoaderWithLocalFallback,
+            imageLoader: makeLocalImageLoaderWithRemoteFallback,
+            selection: { _ in }))
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let scene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: scene)
+        configureWindow()
+    }
+    
+    func configureWindow() {
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
     }
     
     private func makeRemoteFeedLoaderWithLocalFallback() -> AnyPublisher<Paginated<CharacterItem>, Error> {
@@ -71,7 +79,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .eraseToAnyPublisher()
     }
     
-    private func makeRemoteLoadMoreLoader(_ items: [CharacterItem], info: Info) 
+    private func makeLocalImageLoaderWithRemoteFallback(with url: URL) -> FeedImageDataLoader.Publisher {
+        
+        let localImageLoader = LocalFeedImageDataLoader(store: store)
+        return localImageLoader.loadImageDataPublisher(from: url)
+            .fallback { [httpClient, scheduler] in
+                httpClient.getPublisher(url: url)
+                    .tryMap(CharacterImageMapper.map)
+                    .caching(to: localImageLoader, using: url)
+                    .subscribe(on: scheduler)
+                    .eraseToAnyPublisher()
+            }
+            .subscribe(on: scheduler)
+            .eraseToAnyPublisher()
+    }
+    
+    private func makeRemoteLoadMoreLoader(_ items: [CharacterItem], info: Info)
     -> (() -> AnyPublisher<Paginated<CharacterItem>, Error>)? {
         guard let next = info.next, let url = URL(string: next) else { return nil }
         

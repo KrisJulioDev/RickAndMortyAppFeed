@@ -7,7 +7,7 @@
 
 import Foundation
  
-public struct CharacterItem: Equatable, Decodable {
+public struct CharacterItem: Hashable, Decodable {
     public let id: Int
     public let name: String
     public let status: String

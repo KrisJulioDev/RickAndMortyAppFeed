@@ -62,6 +62,7 @@ public final class FeedUIComposer {
     ) -> ListViewController {
         let presentationAdapter = FeedPresentationAdapter(loader: feedLoader)
         let feedController = makeFeedController()
+        feedController.onRefresh = presentationAdapter.loadResource
         
         presentationAdapter.presenter = LoadResourcePresenter(
             resourceView: FeedViewAdapter(imageLoader: imageLoader, 

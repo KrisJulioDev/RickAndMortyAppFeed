@@ -16,7 +16,7 @@ public protocol FeedImageCellControllerDelegate {
 public struct FeedImageViewModel {
     let name: String
     let status: String
-    let age: String
+    let type: String
     let species: String
 }
 
@@ -42,6 +42,8 @@ extension FeedImageCellController: UITableViewDelegate, UITableViewDataSource, U
         cell?.name.text = viewModel.name
         cell?.status.text = viewModel.status
         cell?.species.text = viewModel.species
+        cell?.type.text = viewModel.type
+        cell?.contentImage.image = nil
         delegate.didRequestImage()
         
         return cell!
@@ -62,6 +64,13 @@ extension FeedImageCellController: UITableViewDelegate, UITableViewDataSource, U
     
     private func releaseCell() {
         cell = nil
+    }
+}
+
+extension FeedImageCellController: ResourceView {
+    public func display(_ viewModel: UIImage) {
+        cell?.contentImage.setAnimated(viewModel)
+        cell?.contentImage.sizeThatFits(viewModel.size)
     }
 }
 

@@ -5,12 +5,13 @@
 //  Created by Khristoffer Julio on 12/6/23.
 //
 
-import Foundation
-import UIKit 
+import UIKit
+import RickAndMortyFeed
 
-public final class ListViewController: UITableViewController {
-    
+public final class ListViewController: UITableViewController, ResourceLoadingView, ResourceErrorView {
+
     @IBOutlet private(set) weak var loadingView: LoadingView!
+    
     public var onRefresh: (() -> Void)?
     
     private lazy var dataSource: UITableViewDiffableDataSource<Int, CellController> = {
@@ -37,5 +38,13 @@ public final class ListViewController: UITableViewController {
             snapshot.appendItems(cellController, toSection: section)
         }
         dataSource.apply(snapshot)
+    }
+    
+    public func display(_ viewModel: RickAndMortyFeed.ResourceLoadingViewModel) {
+        
+    }
+    
+    public func display(_ viewModel: RickAndMortyFeed.ResourceErrorViewModel) {
+        
     }
 }

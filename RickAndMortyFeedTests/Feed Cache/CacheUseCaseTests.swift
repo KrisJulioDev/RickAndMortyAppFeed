@@ -31,7 +31,7 @@ final class CacheUseCaseTests: XCTestCase {
     func test_save_requestsNewCacheInsertionOnSuccessfulCacheDeletion() {
         let timestamp = Date()
         let (sut, store) = makeSUT { timestamp }
-        let feed = feedCharacters()
+        let feed = anyFeedCharacters()
         let info = anyInfo()
         
         store.deletionCompletedSuccesfully()
@@ -85,7 +85,7 @@ final class CacheUseCaseTests: XCTestCase {
     }
  
     func expect(_ sut: LocalFeedLoader, toCompleteWith error: NSError?, when action: () -> Void) {
-        let feed = feedCharacters()
+        let feed = anyFeedCharacters()
         let info = anyInfo()
         
         action()

@@ -50,7 +50,7 @@ class LoadCacheUseCaseTests: XCTestCase {
     
     func test_load_retrievesDataOnCompleteWithData() {
         let (sut, store) = makeSUT()
-        let expectedFeeds = feedCharacters()
+        let expectedFeeds = anyFeedCharacters()
         let feed = CacheFeed(feed: expectedFeeds.local, info: nil)
         store.retrieveSuccesfully(with: feed)
 

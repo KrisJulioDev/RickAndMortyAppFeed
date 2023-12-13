@@ -40,9 +40,7 @@ extension FeedImageCellController: UITableViewDelegate, UITableViewDataSource, U
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cell = tableView.dequeueReusableCell()
         cell?.name.text = viewModel.name
-        cell?.status.text = viewModel.status
         cell?.species.text = viewModel.species
-        cell?.type.text = viewModel.type
         cell?.contentImage.image = nil
         delegate.didRequestImage()
         
@@ -75,10 +73,19 @@ extension FeedImageCellController: UITableViewDelegate, UITableViewDataSource, U
     }
 }
 
-extension FeedImageCellController: ResourceView {
+extension FeedImageCellController: ResourceView, ResourceLoadingView, ResourceErrorView {
+    public typealias ResourceViewModel = UIImage
+    
     public func display(_ viewModel: UIImage) {
-        cell?.contentImage.setAnimated(viewModel)
-        cell?.contentImage.sizeThatFits(viewModel.size)
+        cell?.contentImage.setAnimated(viewModel) 
+    }
+    
+    public func display(_ viewModel: ResourceLoadingViewModel) {
+
+    }
+    
+    public func display(_ viewModel: ResourceErrorViewModel) {
+        
     }
 }
 

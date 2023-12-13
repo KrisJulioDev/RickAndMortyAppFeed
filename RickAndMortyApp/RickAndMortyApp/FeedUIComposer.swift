@@ -68,6 +68,8 @@ public final class FeedUIComposer {
             resourceView: FeedViewAdapter(imageLoader: imageLoader, 
                                           controller: feedController,
                                           selection: selection),
+            loadingView: WeakVirtualRefProxy(feedController),
+            errorView: WeakVirtualRefProxy(feedController),
             mapper: { $0 }
         )
         

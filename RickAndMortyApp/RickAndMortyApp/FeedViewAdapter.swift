@@ -51,6 +51,8 @@ public final class FeedViewAdapter: ResourceView {
             
             adapter.presenter = LoadResourcePresenter(
                 resourceView: WeakVirtualRefProxy(view),
+                loadingView: WeakVirtualRefProxy(view),
+                errorView: WeakVirtualRefProxy(view),
                 mapper: UIImage.tryMake)
             
             let controller = CellController(id: model, view)

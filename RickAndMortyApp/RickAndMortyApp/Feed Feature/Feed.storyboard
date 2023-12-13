@@ -12,14 +12,14 @@
         <scene sceneID="efi-w8-VBN">
             <objects>
                 <tableViewController id="Hzt-X5-QdF" customClass="ListViewController" customModule="RickAndMortyApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="DuB-yS-5sL">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="DuB-yS-5sL">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="5Vk-z0-UoB" userLabel="LoadingView" customClass="LoadingView" customModule="RickAndMortyApp" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedTableViewCell" rowHeight="525" id="1nH-fn-k2v" customClass="FeedTableViewCell" customModule="RickAndMortyApp" customModuleProvider="target">
@@ -36,14 +36,8 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="337" height="40.666666666666664"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="247" verticalHuggingPriority="252" horizontalCompressionResistancePriority="748" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcY-N7-jjF">
-                                                            <rect key="frame" x="0.0" y="0.0" width="288.66666666666669" height="40.666666666666664"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="337" height="40.666666666666664"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07N-3T-yX0">
-                                                            <rect key="frame" x="293.66666666666669" y="0.0" width="43.333333333333314" height="40.666666666666664"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                            <color key="textColor" systemColor="systemGrayColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -72,16 +66,10 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vfY-ef-Bxl">
                                                     <rect key="frame" x="0.0" y="387.66666666666669" width="337" height="99.333333333333314"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNF-7w-q0P">
-                                                            <rect key="frame" x="0.0" y="0.0" width="294.66666666666669" height="99.333333333333329"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TA3-dE-bKk">
-                                                            <rect key="frame" x="299.66666666666669" y="0.0" width="37.333333333333314" height="99.333333333333329"/>
-                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                            <color key="textColor" systemColor="tertiaryLabelColor"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9TS-rX-dph">
+                                                            <rect key="frame" x="0.0" y="0.0" width="337" height="99.333333333333329"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <color key="textColor" systemColor="systemGrayColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -105,9 +93,7 @@
                                 <connections>
                                     <outlet property="contentImage" destination="cFg-jF-gSp" id="0Le-ur-NTo"/>
                                     <outlet property="name" destination="qcY-N7-jjF" id="zcY-dn-fsW"/>
-                                    <outlet property="species" destination="07N-3T-yX0" id="b4m-0n-xPe"/>
-                                    <outlet property="status" destination="TA3-dE-bKk" id="Zye-DV-2hy"/>
-                                    <outlet property="type" destination="zNF-7w-q0P" id="3Mf-Nv-0LJ"/>
+                                    <outlet property="species" destination="9TS-rX-dph" id="hdS-dT-bBh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -128,9 +114,6 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

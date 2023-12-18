@@ -13,3 +13,4 @@ public protocol HTTPClient {
     @discardableResult
     func get(url: URL, completion: (@escaping (HTTPClient.Result) -> Void)) -> HTTPClientTask
 }
+

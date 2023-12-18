@@ -37,7 +37,7 @@ extension HTTPClient {
         .handleEvents(receiveCancel: { task?.cancel() })
         .eraseToAnyPublisher()
     }
-} 
+}
 
 extension Publisher where Output == Data {
     func caching(to cache: FeedImageDataCache, using url: URL) -> AnyPublisher<Output, Failure> {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		353ACA362B29D9CE005E507A /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353ACA352B29D9CE005E507A /* ErrorView.swift */; };
+		3551151F2B2FF0650070122E /* UIRefreshController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3551151E2B2FF0650070122E /* UIRefreshController+Helper.swift */; };
 		356E22412B2540CD00B1B3E2 /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E22402B2540CD00B1B3E2 /* NullStore.swift */; };
 		356E22492B270AEE00B1B3E2 /* LoadResourcePresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E22482B270AEE00B1B3E2 /* LoadResourcePresentationAdapter.swift */; };
 		356E224D2B27188A00B1B3E2 /* WeakVirtualRefProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E224C2B27188A00B1B3E2 /* WeakVirtualRefProxy.swift */; };
@@ -57,6 +58,7 @@
 
 /* Begin PBXFileReference section */
 		353ACA352B29D9CE005E507A /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		3551151E2B2FF0650070122E /* UIRefreshController+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshController+Helper.swift"; sourceTree = "<group>"; };
 		356E22402B2540CD00B1B3E2 /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 		356E22482B270AEE00B1B3E2 /* LoadResourcePresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresentationAdapter.swift; sourceTree = "<group>"; };
 		356E224C2B27188A00B1B3E2 /* WeakVirtualRefProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakVirtualRefProxy.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				356E22512B271FBE00B1B3E2 /* UIImageView+Animations.swift */,
+				3551151E2B2FF0650070122E /* UIRefreshController+Helper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				359C09202B1FDE0F00780967 /* SceneDelegate.swift in Sources */,
 				359C09512B1FDF5D00780967 /* ListViewController.swift in Sources */,
 				356E224D2B27188A00B1B3E2 /* WeakVirtualRefProxy.swift in Sources */,
+				3551151F2B2FF0650070122E /* UIRefreshController+Helper.swift in Sources */,
 				356E22492B270AEE00B1B3E2 /* LoadResourcePresentationAdapter.swift in Sources */,
 				356E22412B2540CD00B1B3E2 /* NullStore.swift in Sources */,
 				35C319FC2B2296A30015F8FF /* FeedUIComposer.swift in Sources */,

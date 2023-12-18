@@ -51,7 +51,7 @@ public final class ListViewController: UITableViewController, ResourceLoadingVie
             self.tableView.beginUpdates()
             self.tableView.sizeTableHeaderToFit()
             self.tableView.endUpdates()
-        } 
+        }
     }
    
     func display(_ sections: [CellController]...) {
@@ -69,11 +69,16 @@ public final class ListViewController: UITableViewController, ResourceLoadingVie
     }
     
     public func display(_ viewModel: ResourceLoadingViewModel) {
-        
+        refreshControl?.update(isRefreshing: viewModel.isLoading)
     }
     
     public func display(_ viewModel: ResourceErrorViewModel) {
         errorView.message = viewModel.errorMessage
+        tableView.sizeTableHeaderToFit()
+    }
+    
+    @IBAction func refresh() {
+        onRefresh?()
     }
 }
 

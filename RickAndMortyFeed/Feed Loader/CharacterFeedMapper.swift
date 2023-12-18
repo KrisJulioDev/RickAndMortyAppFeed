@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+ 
 public struct CharacterFeedMapper {
     public enum MappingError: Error {
         case invalidData

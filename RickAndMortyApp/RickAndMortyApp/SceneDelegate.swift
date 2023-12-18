@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import Combine
 import RickAndMortyFeed
-
+ 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow? 
@@ -35,7 +35,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private lazy var httpClient: HTTPClient = {
         URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
-    }()
+    }() 
     
     private lazy var navigationController: UINavigationController = UINavigationController(
         rootViewController: FeedUIComposer.composeWith(

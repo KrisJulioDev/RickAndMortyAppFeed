@@ -10,8 +10,7 @@ import RickAndMortyFeed
 
 public final class ListViewController: UITableViewController, ResourceLoadingView, ResourceErrorView {
 
-    @IBOutlet private(set) weak var loadingView: LoadingView!
-    
+    private(set) public var errorView = ErrorView()
     public var onRefresh: (() -> Void)?
     
     private lazy var dataSource: UITableViewDiffableDataSource<Int, CellController> = {
@@ -22,13 +21,37 @@ public final class ListViewController: UITableViewController, ResourceLoadingVie
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        configureTableView()
+        
+        configureErrorView()
         onRefresh?()
     }
     
-    private func configureTableView() {
-        tableView.dataSource = dataSource
-        dataSource.defaultRowAnimation = .fade
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.sizeTableHeaderToFit()
+    }
+    
+    private func configureErrorView() {
+        let container = UIView()
+        container.backgroundColor = .clear
+        container.addSubview(errorView) 
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            errorView.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            container.trailingAnchor.constraint(equalTo: errorView.trailingAnchor),
+            errorView.topAnchor.constraint(equalTo: container.topAnchor),
+            container.bottomAnchor.constraint(equalTo: errorView.bottomAnchor)
+        ])
+        
+        tableView.tableHeaderView = container
+        
+        errorView.onHide = { [weak self] in
+            guard let self else { return }
+            self.tableView.beginUpdates()
+            self.tableView.sizeTableHeaderToFit()
+            self.tableView.endUpdates()
+        } 
     }
    
     func display(_ sections: [CellController]...) {
@@ -37,14 +60,32 @@ public final class ListViewController: UITableViewController, ResourceLoadingVie
             snapshot.appendSections([section])
             snapshot.appendItems(cellController, toSection: section)
         }
-        dataSource.apply(snapshot)
+        
+        if #available(iOS 15, *) {
+            dataSource.apply(snapshot, animatingDifferences: false)
+        } else {
+            dataSource.apply(snapshot)
+        }
     }
     
-    public func display(_ viewModel: RickAndMortyFeed.ResourceLoadingViewModel) {
+    public func display(_ viewModel: ResourceLoadingViewModel) {
         
     }
     
-    public func display(_ viewModel: RickAndMortyFeed.ResourceErrorViewModel) {
+    public func display(_ viewModel: ResourceErrorViewModel) {
+        errorView.message = viewModel.errorMessage
+    }
+}
+
+extension UITableView {
+    func sizeTableHeaderToFit() {
+        guard let header = tableHeaderView else { return }
         
+        let size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        let needFrameUpdate = header.frame.height != size.height
+        if needFrameUpdate {
+            header.frame.size.height = size.height
+            tableHeaderView = header
+        }
     }
 }

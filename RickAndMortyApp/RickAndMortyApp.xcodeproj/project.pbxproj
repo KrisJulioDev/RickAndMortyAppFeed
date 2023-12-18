@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		353ACA362B29D9CE005E507A /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353ACA352B29D9CE005E507A /* ErrorView.swift */; };
 		356E22412B2540CD00B1B3E2 /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E22402B2540CD00B1B3E2 /* NullStore.swift */; };
 		356E22492B270AEE00B1B3E2 /* LoadResourcePresentationAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E22482B270AEE00B1B3E2 /* LoadResourcePresentationAdapter.swift */; };
 		356E224D2B27188A00B1B3E2 /* WeakVirtualRefProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356E224C2B27188A00B1B3E2 /* WeakVirtualRefProxy.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		353ACA352B29D9CE005E507A /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		356E22402B2540CD00B1B3E2 /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 		356E22482B270AEE00B1B3E2 /* LoadResourcePresentationAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresentationAdapter.swift; sourceTree = "<group>"; };
 		356E224C2B27188A00B1B3E2 /* WeakVirtualRefProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakVirtualRefProxy.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			children = (
 				352F58F82B287B87001EBEA4 /* Models */,
 				35C319F42B21D89A0015F8FF /* FeedTableViewCell.swift */,
+				353ACA352B29D9CE005E507A /* ErrorView.swift */,
 				356E224E2B271AD100B1B3E2 /* FeedImagePresenter.swift */,
 				35C319F62B2288DC0015F8FF /* LoadingView.swift */,
 				35F852392B22D81F003995EF /* FeedTableCellController.swift */,
@@ -325,6 +328,7 @@
 				356E22492B270AEE00B1B3E2 /* LoadResourcePresentationAdapter.swift in Sources */,
 				356E22412B2540CD00B1B3E2 /* NullStore.swift in Sources */,
 				35C319FC2B2296A30015F8FF /* FeedUIComposer.swift in Sources */,
+				353ACA362B29D9CE005E507A /* ErrorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,7 +496,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -521,7 +525,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

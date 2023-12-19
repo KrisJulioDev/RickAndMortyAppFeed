@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 import Combine
 import RickAndMortyFeed
+import RickAndMortyFeediOS
  
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -66,9 +67,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func makePage(_ items: [CharacterItem], info: Info) -> Paginated<CharacterItem> {
-        Paginated(items: items, loadMorePublisher:
-            self.makeRemoteLoadMoreLoader(items, info: info)
-        )
+        Paginated(items: items,  loadMorePublisher: makeRemoteLoadMoreLoader(items, info: info))
     }
     
     private func makeRemoteFeedLoader() -> AnyPublisher<CharacterFeedResult, Error> {
@@ -104,9 +103,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             httpClient
                 .getPublisher(url: endpoint)
                 .tryMap(CharacterFeedMapper.map)
-                .map { newItems in
+                .map { [weak self] newItems in
                     let allItems = items + newItems.results
-                    return Paginated(items: allItems, loadMorePublisher: self.makeRemoteLoadMoreLoader(allItems, info: newItems.info))
+                    return Paginated(items: allItems, loadMorePublisher: self?.makeRemoteLoadMoreLoader(allItems, info: newItems.info))
                 }
                 .eraseToAnyPublisher()
         }

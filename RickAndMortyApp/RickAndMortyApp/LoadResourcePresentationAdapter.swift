@@ -7,6 +7,7 @@
 
 import Combine
 import RickAndMortyFeed
+import RickAndMortyFeediOS
 
 public final class LoadResourcePresentationAdapter<Resource, View: ResourceView> {
     private let loader: () -> AnyPublisher<Resource, Error>

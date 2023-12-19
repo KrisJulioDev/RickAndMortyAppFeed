@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import RickAndMortyFeed
+import RickAndMortyFeediOS
 
 public final class FeedViewAdapter: ResourceView {
     

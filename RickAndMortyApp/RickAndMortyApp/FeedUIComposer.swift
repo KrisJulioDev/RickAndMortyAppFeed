@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import RickAndMortyFeed
+import RickAndMortyFeediOS
 
 public struct Paginated<Item> {
     public typealias LoadMoreCompletion = (Result<Self, Error>) -> Void

@@ -54,7 +54,7 @@ public final class ListViewController: UITableViewController, ResourceLoadingVie
         }
     }
    
-    func display(_ sections: [CellController]...) {
+    public func display(_ sections: [CellController]...) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, CellController>()
         sections.enumerated().forEach { section, cellController in
             snapshot.appendSections([section])

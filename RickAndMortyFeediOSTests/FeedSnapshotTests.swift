@@ -50,7 +50,7 @@ final class FeedSnapshotTests: XCTestCase {
         
         sut.display(feedWithLoadMoreIndicator())
         
-        assert(snapshot: sut.snapshot(for: .iPhone12(style: .dark)), named: "FEED_WITH_LOAD_MORE_INDICATOR_light")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .light)), named: "FEED_WITH_LOAD_MORE_INDICATOR_light")
         assert(snapshot: sut.snapshot(for: .iPhone12(style: .dark)), named: "FEED_WITH_LOAD_MORE_INDICATOR_dark")
     }
     

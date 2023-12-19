@@ -18,6 +18,13 @@ public struct FeedImageViewModel {
     let status: String
     let type: String
     let species: String
+    
+    public init(name: String, status: String, type: String, species: String) {
+        self.name = name
+        self.status = status
+        self.type = type
+        self.species = species
+    }
 }
 
 public final class FeedImageCellController: NSObject {

@@ -1,4 +1,7 @@
 # Rick & Morty Character lists feed written in Swift | UIKit
+ 
+https://github.com/KrisJulioDev/RickAndMortyAppFeed/assets/8087709/2e2be72b-b228-4f0f-a508-dad7f98005b1
+   
 ## This sample project practices the implementations of the following:
 ### Composite Root architectural pattern
   > Main module composes all dependencies in root or entry point of the app w/c is the UISceneDelegate

@@ -15,6 +15,8 @@ class ManagedFeed: NSManagedObject {
     @NSManaged var species: String
     @NSManaged var type: String
     @NSManaged var gender: String
+    @NSManaged var location: String
+    @NSManaged var origin: String
     @NSManaged var image: URL
     @NSManaged var data: Data?
 }
@@ -46,6 +48,8 @@ extension ManagedFeed {
             managedFeed.type = feed.type
             managedFeed.status = feed.status
             managedFeed.species = feed.species
+            managedFeed.origin = feed.origin
+            managedFeed.location = feed.location
             managedFeed.image = feed.image
             managedFeed.data = context.userInfo[feed.image] as? Data
             return managedFeed

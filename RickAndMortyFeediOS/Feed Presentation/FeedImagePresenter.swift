@@ -9,6 +9,6 @@ import RickAndMortyFeed
 
 public final class FeedImagePresenter {
     public static func map(_ image: CharacterItem) -> FeedImageViewModel {
-        FeedImageViewModel(name: image.name, status: image.status, type: image.type, species: image.species)
+        FeedImageViewModel(name: image.name, status: image.status, type: image.type, species: image.species, location: image.location.name, origin: image.origin.name)
     }
 }

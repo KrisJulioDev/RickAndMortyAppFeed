@@ -14,7 +14,7 @@ class ManagedCache: NSManagedObject {
     
     var localCharacters: [LocalCharacter] {
         feed.compactMap { $0 as? ManagedFeed }.map {
-            LocalCharacter(id: $0.id, name: $0.name, status: $0.status, species: $0.species, type: $0.type, gender: $0.gender, image: $0.image)
+            LocalCharacter(id: $0.id, name: $0.name, status: $0.status, species: $0.species, type: $0.type, gender: $0.gender, image: $0.image, location: $0.location, origin: $0.origin)
         }
     }
 }

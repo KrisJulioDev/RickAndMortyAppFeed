@@ -13,17 +13,21 @@ public protocol FeedImageCellControllerDelegate {
     func didCancelRequestImage()
 }
 
-public struct FeedImageViewModel {
+public struct FeedImageViewModel { 
     let name: String
     let status: String
     let type: String
     let species: String
+    let location: String
+    let origin: String
     
-    public init(name: String, status: String, type: String, species: String) {
+    public init(name: String, status: String, type: String, species: String, location: String, origin: String) {
         self.name = name
         self.status = status
         self.type = type
         self.species = species
+        self.location = location
+        self.origin = origin
     }
 }
 
@@ -47,7 +51,12 @@ extension FeedImageCellController: UITableViewDelegate, UITableViewDataSource, U
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         cell = tableView.dequeueReusableCell()
         cell?.name.text = viewModel.name
+        cell?.status.text = viewModel.status
         cell?.species.text = viewModel.species
+        
+        cell?.location.text = viewModel.location
+        cell?.origin.text = viewModel.origin
+        
         cell?.contentContainer.isShimmering = true
         cell?.reloadButton.isHidden = true 
         cell?.contentImage.image = nil

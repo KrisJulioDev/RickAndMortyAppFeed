@@ -16,7 +16,9 @@ func someJSONData() -> (data: Data, model: CharacterItem) {
         species: "Humanoid",
         type: "Rick's Toxic Side",
         gender: "Male",
-        image: URL(string: "https://rickandmortyapi.com/api/character/avatar/361.jpeg")!
+        image: URL(string: "https://rickandmortyapi.com/api/character/avatar/361.jpeg")!,
+        location: "Earth",
+        origin: "Mars"
     )
     
     let json: [String : Any] = ["info":

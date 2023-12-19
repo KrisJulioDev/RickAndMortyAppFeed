@@ -28,6 +28,7 @@ public final class ListViewController: UITableViewController, UITableViewDataSou
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.sizeTableHeaderToFit()
     }
     

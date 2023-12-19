@@ -14,9 +14,9 @@ public func anyInfo() -> Info {
 
 public func anyFeedCharacters() -> (model: [CharacterItem], local: [LocalCharacter]) {
     
-    let model = [CharacterItem(id: 1, name: "model-1", status: "alive", species: "", type: "", gender: "", image: URL(string: "any")!)]
+    let model = [CharacterItem(id: 1, name: "model-1", status: "alive", species: "", type: "", gender: "", image: URL(string: "any")!, location: "earth", origin: "mars")]
 
-    let local = [LocalCharacter(id: 1, name: "model-1", status: "alive", species: "", type: "", gender: "", image: URL(string: "any")!)]
+    let local = [LocalCharacter(id: 1, name: "model-1", status: "alive", species: "", type: "", gender: "", image: URL(string: "any")!, location: "mars", origin: "earth")]
     
     return (model, local)
 }

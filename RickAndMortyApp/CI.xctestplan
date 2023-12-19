@@ -1,0 +1,44 @@
+{
+  "configurations" : [
+    {
+      "id" : "907FC32A-603F-4CAA-8F2D-4997C98FBC04",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:RickAndMortyApp.xcodeproj",
+      "identifier" : "359C09192B1FDE0F00780967",
+      "name" : "RickAndMortyApp"
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:..\/RickAndMortyFeed.xcodeproj",
+        "identifier" : "35C075C52B21476F00B379CE",
+        "name" : "RickAndMortyCacheFeedIntegrationTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/RickAndMortyFeed.xcodeproj",
+        "identifier" : "359C09062B1F41DB00780967",
+        "name" : "RickAndMortyFeedEndToEndTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/RickAndMortyFeed.xcodeproj",
+        "identifier" : "35D363202B1E991100499E0D",
+        "name" : "RickAndMortyFeedTests"
+      }
+    }
+  ],
+  "version" : 1
+}

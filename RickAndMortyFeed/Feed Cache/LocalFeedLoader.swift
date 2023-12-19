@@ -38,7 +38,7 @@ extension LocalFeedLoader {
 extension Array where Element == CharacterItem {
     func local() -> [LocalCharacter] {
         map {
-            LocalCharacter(id: $0.id, name: $0.name, status: $0.status, species: $0.species, type: $0.type, gender: $0.gender, image: $0.image)
+            LocalCharacter(id: $0.id, name: $0.name, status: $0.status, species: $0.species, type: $0.type, gender: $0.gender, image: $0.image, location: $0.location.name, origin: $0.origin.name)
         }
     }
 }
@@ -46,7 +46,7 @@ extension Array where Element == CharacterItem {
 public extension Array where Element == LocalCharacter {
     func model() -> [CharacterItem] {
         map {
-            CharacterItem(id: $0.id, name: $0.name, status: $0.status, species: $0.species, type: $0.type, gender: $0.gender, image: $0.image)
+            CharacterItem(id: $0.id, name: $0.name, status: $0.status, species: $0.species, type: $0.type, gender: $0.gender, image: $0.image, location: $0.location, origin: $0.origin)
         }
     }
 }

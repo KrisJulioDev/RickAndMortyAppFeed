@@ -13,57 +13,57 @@ final class FeedSnapshotTests: XCTestCase {
     func test_emptyFeed() {
         let sut = makeSUT()
         
-        sut.display(emptyFeed)
+        sut.display(emptyFeed())
         
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "EMPTY_FEED_light")
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "EMPTY_FEED_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .light)), named: "EMPTY_FEED_light")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .dark)), named: "EMPTY_FEED_dark")
     }
     
     func test_feed_withContent() {
         let sut = makeSUT()
         
-        sut.display(stubs: feedWithContent)
+        sut.display(stubs: feedWithContent())
         
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_CONTENT_light")
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_CONTENT_DARK")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .light)), named: "FEED_WITH_CONTENT_light")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .dark)), named: "FEED_WITH_CONTENT_dark")
         
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_CONTENT_light_extraExtraExtraLarge")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_CONTENT_light_extraExtraExtraLarge")
         
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_CONTENT_dark_extraExtraExtraLarge")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .dark, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_CONTENT_dark_extraExtraExtraLarge")
     }
     
     func test_feed_withFailingImage() {
         let sut = makeSUT()
         
-        sut.display(stubs: feedWithFailImageContent)
+        sut.display(stubs: feedWithFailImageContent())
         
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_FAIL_IMAGE_CONTENT_light")
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_FAIL_IMAGE_CONTENT_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .light)), named: "FEED_WITH_FAIL_IMAGE_CONTENT_light")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .dark)), named: "FEED_WITH_FAIL_IMAGE_CONTENT_dark")
         
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_FAIL_IMAGE_CONTENT_extraExtraExtraLarge")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_FAIL_IMAGE_CONTENT_light_extraExtraExtraLarge")
         
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_FAIL_IMAGE_CONTENT_dark_extraExtraExtraLarge")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .dark, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_FAIL_IMAGE_CONTENT_dark_extraExtraExtraLarge")
     }
     
     func test_feed_withLoadMoreIndicator() {
         let sut = makeSUT()
         
-        sut.display(feedWithLoadMoreIndicator)
+        sut.display(feedWithLoadMoreIndicator())
         
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_LOAD_MORE_INDICATOR_light")
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_LOAD_MORE_INDICATOR_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .dark)), named: "FEED_WITH_LOAD_MORE_INDICATOR_light")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .dark)), named: "FEED_WITH_LOAD_MORE_INDICATOR_dark")
     }
     
     func test_feed_withLoadMoreError() {
         let sut = makeSUT()
         
-        sut.display(feedWithLoadMoreError)
+        sut.display(feedWithLoadMoreError())
         
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_LOAD_MORE_ERROR_light")
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_LOAD_MORE_ERROR_dark")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .light)), named: "FEED_WITH_LOAD_MORE_ERROR_light")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .dark)), named: "FEED_WITH_LOAD_MORE_ERROR_dark")
         
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_LOAD_MORE_ERROR_light_extraExtraExtraLarge")
-        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_LOAD_MORE_ERROR_dark_extraExtraExtraLarge")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_LOAD_MORE_ERROR_light_extraExtraExtraLarge")
+        assert(snapshot: sut.snapshot(for: .iPhone12(style: .dark, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_LOAD_MORE_ERROR_dark_extraExtraExtraLarge")
     }
     
     // MARK: Helpers
@@ -78,24 +78,24 @@ final class FeedSnapshotTests: XCTestCase {
         return controller
     }
     
-    private var emptyFeed: [CellController] { [] }
+    private func emptyFeed() -> [CellController] { [] }
     
-    private var feedWithContent: [ImageStub] {
+    private func feedWithContent() -> [ImageStub] {
         [
-            ImageStub(name: "Rick", status: "Alive", type: "n/a", species: "Human", image: UIImage.make(withColor: .red)),
-            ImageStub(name: "Morty", status: "Half-alive", type: "n/a", species: "Zombie", image: UIImage.make(withColor: .gray)),
-        ] 
-    }
-    
-    private var feedWithFailImageContent: [ImageStub] {
-        [
-            ImageStub(name: "Rick", status: "Alive", type: "n/a", species: "Human", image: nil),
-            ImageStub(name: "Morty", status: "Half-alive", type: "n/a", species: "Zombie", image: nil),
+            ImageStub(name: "Rick", status: "Alive", type: "n/a", species: "Human", image: UIImage.make(withColor: .red), location: "Earth", origin: "Mars"),
+            ImageStub(name: "Morty", status: "Half-alive", type: "n/a", species: "Zombie", image: UIImage.make(withColor: .gray), location: "Mars", origin: "Earth"),
         ]
     }
     
-    private var feedWithLoadMoreIndicator: [CellController] {
-        let stub = feedWithContent.last!
+    private func feedWithFailImageContent() -> [ImageStub] {
+        [
+            ImageStub(name: "Rick", status: "Alive", type: "n/a", species: "Human", image: nil, location: "Earth", origin: "Mars"),
+            ImageStub(name: "Morty", status: "Half-alive", type: "n/a", species: "Zombie", image: nil, location: "Mars", origin: "Earth"),
+        ]
+    }
+    
+    private func feedWithLoadMoreIndicator() -> [CellController] {
+        let stub = feedWithContent().last!
         let cellController = FeedImageCellController(viewModel: stub.viewModel, delegate: stub, selection: {})
         stub.controller = cellController
         
@@ -108,8 +108,8 @@ final class FeedSnapshotTests: XCTestCase {
         ]
     }
      
-    private var feedWithLoadMoreError: [CellController] {
-        let stub = feedWithContent.last!
+    private func feedWithLoadMoreError() -> [CellController] {
+        let stub = feedWithContent().last!
         let cellController = FeedImageCellController(viewModel: stub.viewModel, delegate: stub, selection: {})
         stub.controller = cellController
         
@@ -141,8 +141,8 @@ private class ImageStub: FeedImageCellControllerDelegate {
     let image: UIImage?
     weak var controller: FeedImageCellController?
     
-    init(name: String, status: String, type: String, species: String, image: UIImage?, controller: FeedImageCellController? = nil) {
-        self.viewModel = FeedImageViewModel(name: name, status: status, type: type, species: species)
+    init(name: String, status: String, type: String, species: String, image: UIImage?, location: String, origin: String, controller: FeedImageCellController? = nil) {
+        self.viewModel = FeedImageViewModel(name: name, status: status, type: type, species: species, location: location, origin: origin)
         self.image = image
     }
     

@@ -14,4 +14,12 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet private(set) weak var status: UILabel!
     @IBOutlet private(set) weak var type: UILabel!
     @IBOutlet private(set) weak var contentImage: UIImageView!
+    @IBOutlet private(set) weak var contentContainer: UIView!
+    @IBOutlet private(set) weak var reloadButton: UIButton!
+    
+    var reload: (() -> Void)?
+    
+    @IBAction func reloadImage() {
+        reload?()
+    }
 }

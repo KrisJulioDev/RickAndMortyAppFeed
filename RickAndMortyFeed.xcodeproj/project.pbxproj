@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3507E1542B3131F900845F35 /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3507E1532B3131F900845F35 /* UIView+Shimmering.swift */; };
 		352AF78C2B3114E1005DDBDF /* RickAndMortyFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352AF7842B3114E1005DDBDF /* RickAndMortyFeediOS.framework */; };
 		352AF7922B3114E1005DDBDF /* RickAndMortyFeediOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 352AF7862B3114E1005DDBDF /* RickAndMortyFeediOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		352AF7AA2B311597005DDBDF /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AF79B2B311523005DDBDF /* ListViewController.swift */; };
@@ -130,6 +131,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3507E1532B3131F900845F35 /* UIView+Shimmering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shimmering.swift"; sourceTree = "<group>"; };
 		352AF7842B3114E1005DDBDF /* RickAndMortyFeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RickAndMortyFeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		352AF7862B3114E1005DDBDF /* RickAndMortyFeediOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RickAndMortyFeediOS.h; sourceTree = "<group>"; };
 		352AF78B2B3114E1005DDBDF /* RickAndMortyFeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyFeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,6 +309,7 @@
 			children = (
 				352AF7A42B31152E005DDBDF /* UIImageView+Animations.swift */,
 				352AF7A52B31152E005DDBDF /* UIRefreshController+Helper.swift */,
+				3507E1532B3131F900845F35 /* UIView+Shimmering.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				352AF7B22B3115B0005DDBDF /* FeedTableCellController.swift in Sources */,
+				3507E1542B3131F900845F35 /* UIView+Shimmering.swift in Sources */,
 				352AF7AC2B3115AA005DDBDF /* UIImageView+Animations.swift in Sources */,
 				352AF7AA2B311597005DDBDF /* ListViewController.swift in Sources */,
 				352AF7AD2B3115AA005DDBDF /* UIRefreshController+Helper.swift in Sources */,

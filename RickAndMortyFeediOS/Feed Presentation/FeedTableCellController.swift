@@ -48,7 +48,10 @@ extension FeedImageCellController: UITableViewDelegate, UITableViewDataSource, U
         cell = tableView.dequeueReusableCell()
         cell?.name.text = viewModel.name
         cell?.species.text = viewModel.species
+        cell?.contentContainer.isShimmering = true
+        cell?.reloadButton.isHidden = true 
         cell?.contentImage.image = nil
+        cell?.reload = delegate.didRequestImage
         delegate.didRequestImage()
         
         return cell!
@@ -88,11 +91,11 @@ extension FeedImageCellController: ResourceView, ResourceLoadingView, ResourceEr
     }
     
     public func display(_ viewModel: ResourceLoadingViewModel) {
-
+        cell?.contentContainer.isShimmering = viewModel.isLoading
     }
     
     public func display(_ viewModel: ResourceErrorViewModel) {
-        
+        cell?.reloadButton.isHidden = viewModel.errorMessage == nil
     }
 }
 

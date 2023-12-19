@@ -16,7 +16,6 @@ public final class CharacterImageMapper {
         guard response.isValid && !data.isEmpty else {
             throw Error.invalidData
         }
-        
         return data
     }
 }

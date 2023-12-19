@@ -57,7 +57,7 @@ extension FeedImageCellController: UITableViewDelegate, UITableViewDataSource, U
         return cell!
     }
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection : Int) -> Int {
         1
     }
     

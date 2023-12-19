@@ -32,7 +32,39 @@ final class FeedSnapshotTests: XCTestCase {
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_CONTENT_dark_extraExtraExtraLarge")
     }
     
+    func test_feed_withFailingImage() {
+        let sut = makeSUT()
+        
+        sut.display(stubs: feedWithFailImageContent)
+        
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_FAIL_IMAGE_CONTENT_light")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_FAIL_IMAGE_CONTENT_dark")
+        
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_FAIL_IMAGE_CONTENT_extraExtraExtraLarge")
+        
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_FAIL_IMAGE_CONTENT_dark_extraExtraExtraLarge")
+    }
     
+    func test_feed_withLoadMoreIndicator() {
+        let sut = makeSUT()
+        
+        sut.display(feedWithLoadMoreIndicator)
+        
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_LOAD_MORE_INDICATOR_light")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_LOAD_MORE_INDICATOR_dark")
+    }
+    
+    func test_feed_withLoadMoreError() {
+        let sut = makeSUT()
+        
+        sut.display(feedWithLoadMoreError)
+        
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_LOAD_MORE_ERROR_light")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_LOAD_MORE_ERROR_dark")
+        
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .light, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_LOAD_MORE_ERROR_light_extraExtraExtraLarge")
+        assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark, contentSize: .extraExtraExtraLarge)), named: "FEED_WITH_LOAD_MORE_ERROR_dark_extraExtraExtraLarge")
+    }
     
     // MARK: Helpers
     
@@ -52,8 +84,42 @@ final class FeedSnapshotTests: XCTestCase {
         [
             ImageStub(name: "Rick", status: "Alive", type: "n/a", species: "Human", image: UIImage.make(withColor: .red)),
             ImageStub(name: "Morty", status: "Half-alive", type: "n/a", species: "Zombie", image: UIImage.make(withColor: .gray)),
+        ] 
+    }
+    
+    private var feedWithFailImageContent: [ImageStub] {
+        [
+            ImageStub(name: "Rick", status: "Alive", type: "n/a", species: "Human", image: nil),
+            ImageStub(name: "Morty", status: "Half-alive", type: "n/a", species: "Zombie", image: nil),
         ]
+    }
+    
+    private var feedWithLoadMoreIndicator: [CellController] {
+        let stub = feedWithContent.last!
+        let cellController = FeedImageCellController(viewModel: stub.viewModel, delegate: stub, selection: {})
+        stub.controller = cellController
         
+        let loadMore = LoadMoreCellController(callBack: {})
+        loadMore.display(.init(isLoading: true))
+        
+        return [
+            CellController(id: UUID(), cellController),
+            CellController(id: UUID(), loadMore)
+        ]
+    }
+     
+    private var feedWithLoadMoreError: [CellController] {
+        let stub = feedWithContent.last!
+        let cellController = FeedImageCellController(viewModel: stub.viewModel, delegate: stub, selection: {})
+        stub.controller = cellController
+        
+        let loadMore = LoadMoreCellController(callBack: {})
+        loadMore.display(.init(errorMessage: "Couldn't connect to the server"))
+        
+        return [
+            CellController(id: UUID(), cellController),
+            CellController(id: UUID(), loadMore)
+        ]
     }
 }
 

@@ -7,22 +7,22 @@
 		<key>RickAndMortyCacheFeedIntegrationTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>3</integer>
 		</dict>
 		<key>RickAndMortyFeed.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>1</integer>
 		</dict>
 		<key>RickAndMortyFeedEndToEndTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>4</integer>
 		</dict>
 		<key>RickAndMortyFeediOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<key>RickAndMortyFeediOSTests.xcscheme_^#shared#^_</key>
 		<dict>
@@ -48,6 +48,16 @@
 			<true/>
 		</dict>
 		<key>35C075C52B21476F00B379CE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>35D363182B1E991100499E0D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>35D363202B1E991100499E0D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

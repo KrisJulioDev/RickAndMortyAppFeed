@@ -8,28 +8,15 @@
 import RickAndMortyFeed
 
 class NullStore: FeedStore {
-    func save(feed: [RickAndMortyFeed.LocalCharacter], info: RickAndMortyFeed.Info) throws {
-         
-    }
+    func save(feed: [LocalCharacter], info: Info) throws {}
     
-    func retrieve() throws -> RickAndMortyFeed.CacheFeed? {
-        .none
-    }
+    func retrieve() throws -> RickAndMortyFeed.CacheFeed? { .none }
     
-    func deleteCacheFeed() throws {
-         
-    }
+    func deleteCacheFeed() throws {}
 }
 
 extension NullStore: FeedImageDataStore {
-    func insert(_ data: Data, for url: URL) throws {
-         
-    }
+    func insert(_ data: Data, for url: URL) throws {}
     
-    func retrieve(dataForURL: URL) throws -> Data? {
-        .none
-    }
-    
-        
-    
+    func retrieve(dataForURL: URL) throws -> Data? { .none }
 }

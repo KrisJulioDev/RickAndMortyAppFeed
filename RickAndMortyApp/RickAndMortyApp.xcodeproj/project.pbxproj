@@ -429,6 +429,7 @@
 				DEVELOPMENT_TEAM = 99AUV9Q5LC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RickAndMortyApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Rick & Morty";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -458,6 +459,7 @@
 				DEVELOPMENT_TEAM = 99AUV9Q5LC;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RickAndMortyApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Rick & Morty";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
